@@ -9,22 +9,21 @@
 #include <unordered_map>
 
 using namespace std;
-
 class Dataset {
     private:
-        Graph network;
+        Graph<string> network;
         unordered_map<string, City> cities;
         unordered_map<string, Station> stations;
         unordered_map<string, Reservoir> reservoirs;
     public:
         Dataset();
-        Dataset(list<vector<string>> rawReservoirs, list<vector<string>> rawStations, list<vector<string>> rawCities);
+        Dataset(list<vector<string>> rawReservoirs, list<vector<string>> rawStations, list<vector<string>> rawCities, list<vector<string>> rawPipes);
         void loadReservoirs(list<vector<string>> rawReservoirs);
         void loadStations(list<vector<string>> rawStations);
         void loadCities(list<vector<string>> rawCities);
         void loadPipes(list<vector<string>> rawPipes);
 
-        Graph getNetwork() const;
+        Graph<string> getNetwork() const;
 };
 
 

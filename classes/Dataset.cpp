@@ -1,6 +1,6 @@
 #include "Dataset.h"
 
-Graph Dataset::getNetwork() const {
+Graph<string> Dataset::getNetwork() const {
     return this->network;
 }
 
@@ -15,14 +15,14 @@ Dataset::Dataset(list<vector<string>> rawReservoirs, list<vector<string>> rawSta
 
 void Dataset::loadPipes(list<vector<string>> rawPipes) {
     for(vector<string> pipe : rawPipes){
-        Vertex* src = network.findVertex(pipe[0]);
-        Vertex* dest = network.findVertex(pipe[1]);
+        Vertex<string>* src = network.findVertex(pipe[0]);
+        Vertex<string>* dest = network.findVertex(pipe[1]);
         if(stoi(pipe[3]) == 1){
-            src.addEdge(dest, stod(pipe[2]));
+            src->addEdge(dest, stod(pipe[2]));
         }
         else{
-            src.addEdge(dest, stod(pipe[2]));
-            dest.addEdge(src, stod(pipe[2]));
+            src->addEdge(dest, stod(pipe[2]));
+            dest->addEdge(src, stod(pipe[2]));
         }
     }
 }
@@ -42,7 +42,7 @@ void Dataset::loadStations(list<vector<string>> rawStations) {
 }
 
 void Dataset::loadReservoirs(list<vector<string>> rawReservoirs) {
-    for(vector<string> reservoir : rawCities){
+    for(vector<string> reservoir : rawReservoirs){
         this->network.addVertex(reservoir[3]);
         this->reservoirs[reservoir[3]] = Reservoir(reservoir[0], reservoir[1], reservoir[2], reservoir[3], stoi(reservoir[4]));
     }

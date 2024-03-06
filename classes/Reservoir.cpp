@@ -17,7 +17,7 @@ Reservoir::Reservoir(string name, string municipality, string id, string code, i
 }
 
 string Reservoir::getName() const{
-    return this.name;
+    return this->name;
 }
 
 string Reservoir::getMunicipality() const{
