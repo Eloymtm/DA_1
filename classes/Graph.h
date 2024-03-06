@@ -1,6 +1,3 @@
-// Original code by Gonçalo Leão
-// Updated by DA 2023/2024 Team
-
 #ifndef DA_GRAPH
 #define DA_GRAPH
 
@@ -9,7 +6,8 @@
 #include <queue>
 #include <limits>
 #include <algorithm>
-#include "../data_structures/MutablePriorityQueue.h"
+
+using namespace std;
 
 template <class T>
 class Edge;
