@@ -1,22 +1,41 @@
 #include "Dataset.h"
 
-Graph<string> Dataset::getNetwork() const {
+
+
+template<class T>
+Graph<T> Dataset<T>::getNetwork() const {
     return this->network;
 }
 
-Dataset::Dataset() {}
+template<class T>
+Dataset<T>::Dataset() {}
 
-Dataset::Dataset(list<vector<string>> rawReservoirs, list<vector<string>> rawStations, list<vector<string>> rawCities, list<vector<string>> rawPipes){
+
+template<class T>
+Dataset<T>::Dataset(list<vector<T>> rawReservoirs, list<vector<T>> rawStations, list<vector<T>> rawCities, list<vector<T>> rawPipes){
     loadReservoirs(rawReservoirs);
     loadStations(rawStations);
     loadCities(rawCities);
     loadPipes(rawPipes);
 }
 
-void Dataset::loadPipes(list<vector<string>> rawPipes) {
-    for(vector<string> pipe : rawPipes){
-        Vertex<string>* src = network.findVertex(pipe[0]);
-        Vertex<string>* dest = network.findVertex(pipe[1]);
+template<class T>
+void Dataset<T>::loadSuperSink(){
+    Vertex<T>* superSink;
+    superSink->setInfo("SuperSink");
+    network.addVertex("SuperSink");
+    for(Vertex<T>* v : network.getVertexSet()){
+        if(v->getInfo()[0] == 'r'){
+            superSink->addEdge(v, INF);
+        }
+    }
+}
+
+template<class T>
+void Dataset<T>::loadPipes(list<vector<T>> rawPipes) {
+    for(vector<T> pipe : rawPipes){
+        Vertex<T>* src = network.findVertex(pipe[0]);
+        Vertex<T>* dest = network.findVertex(pipe[1]);
         if(stoi(pipe[3]) == 1){
             src->addEdge(dest, stod(pipe[2]));
         }
@@ -27,22 +46,25 @@ void Dataset::loadPipes(list<vector<string>> rawPipes) {
     }
 }
 
-void Dataset::loadCities(list<vector<string>> rawCities) {
-    for(vector<string> city : rawCities){
+template<class T>
+void Dataset<T>::loadCities(list<vector<T>> rawCities) {
+    for(vector<T> city : rawCities){
         this->network.addVertex(city[2]);
         this->cities[city[2]] = City(city[0], city[1], city[2], stof(city[3]), stoi(city[4]));
     }
 }
 
-void Dataset::loadStations(list<vector<string>> rawStations) {
-    for(vector<string> station : rawStations){
+template<class T>
+void Dataset<T>::loadStations(list<vector<T>> rawStations) {
+    for(vector<T> station : rawStations){
         this->network.addVertex(station[1]);
         this->stations[station[1]] = Station(station[0], station[1]);
     }
 }
 
-void Dataset::loadReservoirs(list<vector<string>> rawReservoirs) {
-    for(vector<string> reservoir : rawReservoirs){
+template<class T>
+void Dataset<T>::loadReservoirs(list<vector<T>> rawReservoirs) {
+    for(vector<T> reservoir : rawReservoirs){
         this->network.addVertex(reservoir[3]);
         this->reservoirs[reservoir[3]] = Reservoir(reservoir[0], reservoir[1], reservoir[2], reservoir[3], stoi(reservoir[4]));
     }

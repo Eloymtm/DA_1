@@ -13,7 +13,8 @@ int main() {
     list<vector<string>> rawCities = parser.readFile("../dataset/ds/Cities.csv");
     list<vector<string>> rawPipes = parser.readFile("../dataset/ds/Pipes.csv");
 
-    Dataset dataset = Dataset(rawReservoirs, rawStations, rawCities, rawPipes);
+
+    Dataset<string> dataset = Dataset(rawReservoirs, rawStations, rawCities, rawPipes);
 
     cout << dataset.getNetwork().getNumVertex();
 
