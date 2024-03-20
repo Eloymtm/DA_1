@@ -14,9 +14,9 @@ int main() {
     list<vector<string>> rawPipes = parser.readFile("../dataset/ds/Pipes.csv");
 
 
-    Dataset<string> dataset = Dataset(rawReservoirs, rawStations, rawCities, rawPipes);
-
+    Dataset dataset = Dataset(rawReservoirs, rawStations, rawCities, rawPipes);
     cout << dataset.getNetwork().getNumVertex();
+    dataset.getMaxAmountWater("SuperSource", "R_7");
 
     return 0;
 }

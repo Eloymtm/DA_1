@@ -1,3 +1,3 @@
-/home/eloymtm/Desktop/2_ano_2_semestre/DA/G03_1/cmake-build-debug/CMakeFiles/G03_1.dir
-/home/eloymtm/Desktop/2_ano_2_semestre/DA/G03_1/cmake-build-debug/CMakeFiles/edit_cache.dir
-/home/eloymtm/Desktop/2_ano_2_semestre/DA/G03_1/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/home/eloy_mm2004/Desktop/2ano_2semestre/DA/PROJ_1/cmake-build-debug/CMakeFiles/G03_1.dir
+/home/eloy_mm2004/Desktop/2ano_2semestre/DA/PROJ_1/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/eloy_mm2004/Desktop/2ano_2semestre/DA/PROJ_1/cmake-build-debug/CMakeFiles/rebuild_cache.dir

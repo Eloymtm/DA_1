@@ -10,23 +10,28 @@
 
 using namespace std;
 
-template<class T>
+
 class Dataset {
     private:
-        Graph<T> network;
-        unordered_map<T, City> cities;
-        unordered_map<T, Station> stations;
-        unordered_map<T, Reservoir> reservoirs;
+        Graph<string> network;
+        unordered_map<string, City> cities;
+        unordered_map<string, Station> stations;
+        unordered_map<string, Reservoir> reservoirs;
     public:
         Dataset();
-        Dataset(list<vector<T>> rawReservoirs, list<vector<T>> rawStations, list<vector<T>> rawCities, list<vector<T>> rawPipes);
-        void loadReservoirs(list<vector<T>> rawReservoirs);
-        void loadStations(list<vector<T>> rawStations);
-        void loadCities(list<vector<T>> rawCities);
-        void loadPipes(list<vector<T>> rawPipes);
+        Dataset(list<vector<string>> rawReservoirs, list<vector<string>> rawStations, list<vector<string>> rawCities, list<vector<string>> rawPipes);
+        void loadReservoirs(list<vector<string>> rawReservoirs);
+        void loadStations(list<vector<string>> rawStations);
+        void loadCities(list<vector<string>> rawCities);
+        void loadPipes(list<vector<string>> rawPipes);
         void loadSuperSink();
+        void testAndVisit(queue< Vertex<string>*> &q, Edge<string> *e, Vertex<string> *w, double residual);
+        bool findAugmentingPath(Vertex<string> *s, Vertex<string> *t);
+        void getMaxAmountWater( string source, string target);
+        double getMinimumFlowInPath(Vertex<string>* source, Vertex<string>* target);
+        void setAugmentFlow(Vertex<string>* source, Vertex<string>* target, double flow);
 
-        Graph<T> getNetwork() const;
+        Graph<string> getNetwork() const;
 };
 
 

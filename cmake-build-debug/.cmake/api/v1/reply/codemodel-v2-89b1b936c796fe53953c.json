@@ -49,12 +49,12 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "/home/eloymtm/Desktop/2_ano_2_semestre/DA/G03_1/cmake-build-debug",
-		"source" : "/home/eloymtm/Desktop/2_ano_2_semestre/DA/G03_1"
+		"build" : "/home/eloy_mm2004/Desktop/2ano_2semestre/DA/PROJ_1/cmake-build-debug",
+		"source" : "/home/eloy_mm2004/Desktop/2ano_2semestre/DA/PROJ_1"
 	},
 	"version" : 
 	{
 		"major" : 2,
-		"minor" : 5
+		"minor" : 6
 	}
 }

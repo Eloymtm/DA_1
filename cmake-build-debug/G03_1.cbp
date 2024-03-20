@@ -8,18 +8,18 @@
 		<Option virtualFolders="CMake Files\;"/>
 		<Build>
 			<Target title="all">
-				<Option working_dir="/home/eloymtm/Desktop/2_ano_2_semestre/DA/G03_1/cmake-build-debug"/>
+				<Option working_dir="/home/eloy_mm2004/Desktop/2ano_2semestre/DA/PROJ_1/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/gmake -j6 -f &quot;/home/eloymtm/Desktop/2_ano_2_semestre/DA/G03_1/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
-					<CompileFile command="/usr/bin/gmake -j6 -f &quot;/home/eloymtm/Desktop/2_ano_2_semestre/DA/G03_1/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/gmake -j6 -f &quot;/home/eloymtm/Desktop/2_ano_2_semestre/DA/G03_1/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/gmake -j6 -f &quot;/home/eloymtm/Desktop/2_ano_2_semestre/DA/G03_1/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/gmake -j16 -f &quot;/home/eloy_mm2004/Desktop/2ano_2semestre/DA/PROJ_1/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/gmake -j16 -f &quot;/home/eloy_mm2004/Desktop/2ano_2semestre/DA/PROJ_1/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j16 -f &quot;/home/eloy_mm2004/Desktop/2ano_2semestre/DA/PROJ_1/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j16 -f &quot;/home/eloy_mm2004/Desktop/2ano_2semestre/DA/PROJ_1/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="G03_1">
-				<Option output="/home/eloymtm/Desktop/2_ano_2_semestre/DA/G03_1/cmake-build-debug/G03_1" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/eloymtm/Desktop/2_ano_2_semestre/DA/G03_1/cmake-build-debug"/>
+				<Option output="/home/eloy_mm2004/Desktop/2ano_2semestre/DA/PROJ_1/cmake-build-debug/G03_1" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/eloy_mm2004/Desktop/2ano_2semestre/DA/PROJ_1/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
@@ -33,15 +33,15 @@
 					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/gmake -j6 -f &quot;/home/eloymtm/Desktop/2_ano_2_semestre/DA/G03_1/cmake-build-debug/Makefile&quot;  VERBOSE=1 G03_1"/>
-					<CompileFile command="/usr/bin/gmake -j6 -f &quot;/home/eloymtm/Desktop/2_ano_2_semestre/DA/G03_1/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/gmake -j6 -f &quot;/home/eloymtm/Desktop/2_ano_2_semestre/DA/G03_1/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/gmake -j6 -f &quot;/home/eloymtm/Desktop/2_ano_2_semestre/DA/G03_1/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/gmake -j16 -f &quot;/home/eloy_mm2004/Desktop/2ano_2semestre/DA/PROJ_1/cmake-build-debug/Makefile&quot;  VERBOSE=1 G03_1"/>
+					<CompileFile command="/usr/bin/gmake -j16 -f &quot;/home/eloy_mm2004/Desktop/2ano_2semestre/DA/PROJ_1/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j16 -f &quot;/home/eloy_mm2004/Desktop/2ano_2semestre/DA/PROJ_1/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j16 -f &quot;/home/eloy_mm2004/Desktop/2ano_2semestre/DA/PROJ_1/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="G03_1/fast">
-				<Option output="/home/eloymtm/Desktop/2_ano_2_semestre/DA/G03_1/cmake-build-debug/G03_1" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/eloymtm/Desktop/2_ano_2_semestre/DA/G03_1/cmake-build-debug"/>
+				<Option output="/home/eloy_mm2004/Desktop/2ano_2semestre/DA/PROJ_1/cmake-build-debug/G03_1" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/eloy_mm2004/Desktop/2ano_2semestre/DA/PROJ_1/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
@@ -55,70 +55,70 @@
 					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/gmake -j6 -f &quot;/home/eloymtm/Desktop/2_ano_2_semestre/DA/G03_1/cmake-build-debug/Makefile&quot;  VERBOSE=1 G03_1/fast"/>
-					<CompileFile command="/usr/bin/gmake -j6 -f &quot;/home/eloymtm/Desktop/2_ano_2_semestre/DA/G03_1/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/gmake -j6 -f &quot;/home/eloymtm/Desktop/2_ano_2_semestre/DA/G03_1/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/gmake -j6 -f &quot;/home/eloymtm/Desktop/2_ano_2_semestre/DA/G03_1/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/gmake -j16 -f &quot;/home/eloy_mm2004/Desktop/2ano_2semestre/DA/PROJ_1/cmake-build-debug/Makefile&quot;  VERBOSE=1 G03_1/fast"/>
+					<CompileFile command="/usr/bin/gmake -j16 -f &quot;/home/eloy_mm2004/Desktop/2ano_2semestre/DA/PROJ_1/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j16 -f &quot;/home/eloy_mm2004/Desktop/2ano_2semestre/DA/PROJ_1/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j16 -f &quot;/home/eloy_mm2004/Desktop/2ano_2semestre/DA/PROJ_1/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="edit_cache">
-				<Option working_dir="/home/eloymtm/Desktop/2_ano_2_semestre/DA/G03_1/cmake-build-debug"/>
+				<Option working_dir="/home/eloy_mm2004/Desktop/2ano_2semestre/DA/PROJ_1/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/gmake -j6 -f &quot;/home/eloymtm/Desktop/2_ano_2_semestre/DA/G03_1/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
-					<CompileFile command="/usr/bin/gmake -j6 -f &quot;/home/eloymtm/Desktop/2_ano_2_semestre/DA/G03_1/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/gmake -j6 -f &quot;/home/eloymtm/Desktop/2_ano_2_semestre/DA/G03_1/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/gmake -j6 -f &quot;/home/eloymtm/Desktop/2_ano_2_semestre/DA/G03_1/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/gmake -j16 -f &quot;/home/eloy_mm2004/Desktop/2ano_2semestre/DA/PROJ_1/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/gmake -j16 -f &quot;/home/eloy_mm2004/Desktop/2ano_2semestre/DA/PROJ_1/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j16 -f &quot;/home/eloy_mm2004/Desktop/2ano_2semestre/DA/PROJ_1/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j16 -f &quot;/home/eloy_mm2004/Desktop/2ano_2semestre/DA/PROJ_1/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="rebuild_cache">
-				<Option working_dir="/home/eloymtm/Desktop/2_ano_2_semestre/DA/G03_1/cmake-build-debug"/>
+				<Option working_dir="/home/eloy_mm2004/Desktop/2ano_2semestre/DA/PROJ_1/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/gmake -j6 -f &quot;/home/eloymtm/Desktop/2_ano_2_semestre/DA/G03_1/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
-					<CompileFile command="/usr/bin/gmake -j6 -f &quot;/home/eloymtm/Desktop/2_ano_2_semestre/DA/G03_1/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/gmake -j6 -f &quot;/home/eloymtm/Desktop/2_ano_2_semestre/DA/G03_1/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/gmake -j6 -f &quot;/home/eloymtm/Desktop/2_ano_2_semestre/DA/G03_1/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/gmake -j16 -f &quot;/home/eloy_mm2004/Desktop/2ano_2semestre/DA/PROJ_1/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/gmake -j16 -f &quot;/home/eloy_mm2004/Desktop/2ano_2semestre/DA/PROJ_1/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j16 -f &quot;/home/eloy_mm2004/Desktop/2ano_2semestre/DA/PROJ_1/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j16 -f &quot;/home/eloy_mm2004/Desktop/2ano_2semestre/DA/PROJ_1/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/home/eloymtm/Desktop/2_ano_2_semestre/DA/G03_1/classes/City.cpp">
+		<Unit filename="/home/eloy_mm2004/Desktop/2ano_2semestre/DA/PROJ_1/classes/City.cpp">
 			<Option target="G03_1"/>
 		</Unit>
-		<Unit filename="/home/eloymtm/Desktop/2_ano_2_semestre/DA/G03_1/classes/City.h">
+		<Unit filename="/home/eloy_mm2004/Desktop/2ano_2semestre/DA/PROJ_1/classes/City.h">
 			<Option target="G03_1"/>
 		</Unit>
-		<Unit filename="/home/eloymtm/Desktop/2_ano_2_semestre/DA/G03_1/classes/Dataset.cpp">
+		<Unit filename="/home/eloy_mm2004/Desktop/2ano_2semestre/DA/PROJ_1/classes/Dataset.cpp">
 			<Option target="G03_1"/>
 		</Unit>
-		<Unit filename="/home/eloymtm/Desktop/2_ano_2_semestre/DA/G03_1/classes/Dataset.h">
+		<Unit filename="/home/eloy_mm2004/Desktop/2ano_2semestre/DA/PROJ_1/classes/Dataset.h">
 			<Option target="G03_1"/>
 		</Unit>
-		<Unit filename="/home/eloymtm/Desktop/2_ano_2_semestre/DA/G03_1/classes/Graph.h">
+		<Unit filename="/home/eloy_mm2004/Desktop/2ano_2semestre/DA/PROJ_1/classes/Graph.h">
 			<Option target="G03_1"/>
 		</Unit>
-		<Unit filename="/home/eloymtm/Desktop/2_ano_2_semestre/DA/G03_1/classes/Parser.cpp">
+		<Unit filename="/home/eloy_mm2004/Desktop/2ano_2semestre/DA/PROJ_1/classes/Parser.cpp">
 			<Option target="G03_1"/>
 		</Unit>
-		<Unit filename="/home/eloymtm/Desktop/2_ano_2_semestre/DA/G03_1/classes/Parser.h">
+		<Unit filename="/home/eloy_mm2004/Desktop/2ano_2semestre/DA/PROJ_1/classes/Parser.h">
 			<Option target="G03_1"/>
 		</Unit>
-		<Unit filename="/home/eloymtm/Desktop/2_ano_2_semestre/DA/G03_1/classes/Reservoir.cpp">
+		<Unit filename="/home/eloy_mm2004/Desktop/2ano_2semestre/DA/PROJ_1/classes/Reservoir.cpp">
 			<Option target="G03_1"/>
 		</Unit>
-		<Unit filename="/home/eloymtm/Desktop/2_ano_2_semestre/DA/G03_1/classes/Reservoir.h">
+		<Unit filename="/home/eloy_mm2004/Desktop/2ano_2semestre/DA/PROJ_1/classes/Reservoir.h">
 			<Option target="G03_1"/>
 		</Unit>
-		<Unit filename="/home/eloymtm/Desktop/2_ano_2_semestre/DA/G03_1/classes/Station.cpp">
+		<Unit filename="/home/eloy_mm2004/Desktop/2ano_2semestre/DA/PROJ_1/classes/Station.cpp">
 			<Option target="G03_1"/>
 		</Unit>
-		<Unit filename="/home/eloymtm/Desktop/2_ano_2_semestre/DA/G03_1/classes/Station.h">
+		<Unit filename="/home/eloy_mm2004/Desktop/2ano_2semestre/DA/PROJ_1/classes/Station.h">
 			<Option target="G03_1"/>
 		</Unit>
-		<Unit filename="/home/eloymtm/Desktop/2_ano_2_semestre/DA/G03_1/main.cpp">
+		<Unit filename="/home/eloy_mm2004/Desktop/2ano_2semestre/DA/PROJ_1/main.cpp">
 			<Option target="G03_1"/>
 		</Unit>
-		<Unit filename="/home/eloymtm/Desktop/2_ano_2_semestre/DA/G03_1/CMakeLists.txt">
+		<Unit filename="/home/eloy_mm2004/Desktop/2ano_2semestre/DA/PROJ_1/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>
 	</Project>

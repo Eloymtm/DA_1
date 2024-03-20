@@ -1,4 +1,4 @@
-# Install script for directory: /home/eloymtm/Desktop/2_ano_2_semestre/DA/G03_1
+# Install script for directory: /home/eloy_mm2004/Desktop/2ano_2semestre/DA/PROJ_1
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -50,5 +50,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/eloymtm/Desktop/2_ano_2_semestre/DA/G03_1/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/eloy_mm2004/Desktop/2ano_2semestre/DA/PROJ_1/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
