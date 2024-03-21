@@ -22,6 +22,13 @@ class Dataset {
         void loadStations(list<vector<string>> rawStations);
         void loadCities(list<vector<string>> rawCities);
         void loadPipes(list<vector<string>> rawPipes);
+        void loadSuperSource();
+
+        double edmondsKarp(Graph<string> g,string source, string target);
+        void testAndVisit(std::queue< Vertex<string>*> &q, Edge<string> *e, Vertex<string> *w, double residual);
+        bool findAugmentingPath(Graph<string> g, Vertex<string> *s, Vertex<string> *t);
+        double findMinResidualAlongPath(Vertex<string> *s, Vertex<string> *t);
+        void augmentFlowAlongPath(Vertex<string> *s, Vertex<string> *t, double f);
 
         Graph<string> getNetwork() const;
 };
