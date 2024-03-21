@@ -30,6 +30,8 @@ class Dataset {
         double findMinResidualAlongPath(Vertex<string> *s, Vertex<string> *t);
         void augmentFlowAlongPath(Vertex<string> *s, Vertex<string> *t, double f);
 
+        bool waterNeeds(list<vector<string>> rawCities);
+
         Graph<string> getNetwork() const;
 };
 
