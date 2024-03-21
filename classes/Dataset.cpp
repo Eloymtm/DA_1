@@ -1,4 +1,5 @@
 #include "Dataset.h"
+#include <map>
 
 Graph<string> Dataset::getNetwork() const {
     return this->network;
@@ -147,5 +148,30 @@ double Dataset::edmondsKarp(Graph<string> g,string source, string target) {
     }
 
     return maxFlow;
+}
+
+bool Dataset::waterNeeds(list<vector<string>> rawCities){
+    map<string, double> waterSupply;
+    int r = 0;
+
+    for(vector<string> city : rawCities){
+        waterSupply.insert(make_pair(city[2], edmondsKarp(network,"SuperSource",city[2])));
+    }
+
+    auto it = waterSupply.begin();
+    while(it != waterSupply.end()){
+        auto city = cities.find(it->first);
+        if(it->second < city->second.getDemand()){
+            cout << it->first << " " << city->second.getDemand() - it->second << "\n";
+            r++;
+        }
+        it++;
+    }
+
+    if(r > 0){
+        return false;
+    }
+
+    return true;
 }
 
