@@ -182,6 +182,18 @@ void Dataset::cityMaxFlowMap(list<vector<string>> rawCities){
     }
 }
 
+double Dataset::maxFlow(){
+    double r = 0;
+
+    auto it = cityMaxFlowOriginalGraph.begin();
+    while(it != cityMaxFlowOriginalGraph.end()){
+        r += it->second;
+        it++;
+    }
+
+    return r;
+}
+
 bool Dataset::removeR_Or_PS_Effects(Graph<string> g, string v, list<vector<string>> rawCities){
     g.removeVertex(v);
 
@@ -192,14 +204,25 @@ bool Dataset::removeR_Or_PS_Effects(Graph<string> g, string v, list<vector<strin
         waterSupply.insert(make_pair(city[2], edmondsKarp(g,"SuperSource",city[2])));
     }
 
+    cout << "Total deficit:\n";
     auto it = waterSupply.begin();
     while(it != waterSupply.end()){
         auto city = cities.find(it->first);
         if(it->second < city->second.getDemand()){
-            cout << it->first << " " << city->second.getDemand() - it->second << "\n";
-            r++;
+            cout << it->first << " --> " << city->second.getDemand() - it->second << "\n";
         }
         it++;
+    }
+
+    cout << "\nDeficit relative to the initial max flow of each city:\n";
+    auto it2 = waterSupply.begin();
+    while(it2 != waterSupply.end()){
+        auto city = cityMaxFlowOriginalGraph.find(it2->first);
+        if(it2->second < city->second){
+            cout << it2->first << " --> " << city->second - it2->second << "\n";
+            r++;
+        }
+        it2++;
     }
 
     if(r > 0){
@@ -225,14 +248,25 @@ bool Dataset::removePipeline_Effects(Graph<string> g, string pointA, string poin
         waterSupply.insert(make_pair(city[2], edmondsKarp(g,"SuperSource",city[2])));
     }
 
+    cout << "Total deficit:\n";
     auto it = waterSupply.begin();
     while(it != waterSupply.end()){
         auto city = cities.find(it->first);
         if(it->second < city->second.getDemand()){
-            cout << it->first << " " << city->second.getDemand() - it->second << "\n";
-            r++;
+            cout << it->first << " --> " << city->second.getDemand() - it->second << "\n";
         }
         it++;
+    }
+
+    cout << "\nDeficit relative to the initial max flow of each city:\n";
+    auto it2 = waterSupply.begin();
+    while(it2 != waterSupply.end()){
+        auto city = cityMaxFlowOriginalGraph.find(it2->first);
+        if(it2->second < city->second){
+            cout << it2->first << " --> " << city->second - it2->second << "\n";
+            r++;
+        }
+        it2++;
     }
 
     if(r > 0){
