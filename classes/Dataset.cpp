@@ -1,5 +1,5 @@
 #include "Dataset.h"
-#include <map>
+#include "map"
 
 Graph<string> Dataset::getNetwork() const {
     return this->network;
@@ -185,7 +185,40 @@ void Dataset::cityMaxFlowMap(list<vector<string>> rawCities){
 bool Dataset::removeR_Or_PS_Effects(Graph<string> g, string v, list<vector<string>> rawCities){
     g.removeVertex(v);
 
-    map<string, double> waterSupply;
+    unordered_map<string, double> waterSupply;
+    int r = 0;
+
+    for(vector<string> city : rawCities){
+        waterSupply.insert(make_pair(city[2], edmondsKarp(g,"SuperSource",city[2])));
+    }
+
+    auto it = waterSupply.begin();
+    while(it != waterSupply.end()){
+        auto city = cities.find(it->first);
+        if(it->second < city->second.getDemand()){
+            cout << it->first << " " << city->second.getDemand() - it->second << "\n";
+            r++;
+        }
+        it++;
+    }
+
+    if(r > 0){
+        return false;
+    }
+
+    return true;
+}
+
+bool Dataset::removePipeline_Effects(Graph<string> g, string pointA, string pointB, list<vector<string>> rawCities){
+    for(auto v : g.getVertexSet()){
+        for(auto e : v->getAdj()){
+            if(e->getOrig()->getInfo() == pointA && e->getDest()->getInfo() == pointB){
+                e->setWeight(0);
+            }
+        }
+    }
+
+    unordered_map<string, double> waterSupply;
     int r = 0;
 
     for(vector<string> city : rawCities){
