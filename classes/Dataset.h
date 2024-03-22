@@ -36,6 +36,8 @@ class Dataset {
 
         bool removeR_Or_PS_Effects(Graph<string> g, string v, list<vector<string>> rawCities);
 
+        bool removePipeline_Effects(Graph<string> g, string pointA, string pointB, list<vector<string>> rawCities);
+
         Graph<string> getNetwork() const;
 };
 
