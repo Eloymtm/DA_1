@@ -15,6 +15,7 @@ class Dataset {
         unordered_map<string, City> cities;
         unordered_map<string, Station> stations;
         unordered_map<string, Reservoir> reservoirs;
+        unordered_map<string, double> cityMaxFlowOriginalGraph;
     public:
         Dataset();
         Dataset(list<vector<string>> rawReservoirs, list<vector<string>> rawStations, list<vector<string>> rawCities, list<vector<string>> rawPipes);
@@ -31,6 +32,9 @@ class Dataset {
         void augmentFlowAlongPath(Vertex<string> *s, Vertex<string> *t, double f);
 
         bool waterNeeds(list<vector<string>> rawCities);
+        void cityMaxFlowMap(list<vector<string>> rawCities);
+
+        bool removeR_Or_PS_Effects(Graph<string> g, string v, list<vector<string>> rawCities);
 
         Graph<string> getNetwork() const;
 };

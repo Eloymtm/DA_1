@@ -13,6 +13,7 @@ Dataset::Dataset(list<vector<string>> rawReservoirs, list<vector<string>> rawSta
     loadCities(rawCities);
     loadPipes(rawPipes);
     loadSuperSource();
+    cityMaxFlowMap(rawCities);
 }
 
 void Dataset::loadPipes(list<vector<string>> rawPipes) {
@@ -156,6 +157,39 @@ bool Dataset::waterNeeds(list<vector<string>> rawCities){
 
     for(vector<string> city : rawCities){
         waterSupply.insert(make_pair(city[2], edmondsKarp(network,"SuperSource",city[2])));
+    }
+
+    auto it = waterSupply.begin();
+    while(it != waterSupply.end()){
+        auto city = cities.find(it->first);
+        if(it->second < city->second.getDemand()){
+            cout << it->first << " " << city->second.getDemand() - it->second << "\n";
+            r++;
+        }
+        it++;
+    }
+
+    if(r > 0){
+        return false;
+    }
+
+    return true;
+}
+
+void Dataset::cityMaxFlowMap(list<vector<string>> rawCities){
+    for(vector<string> city : rawCities){
+        cityMaxFlowOriginalGraph.insert(make_pair(city[2], edmondsKarp(network,"SuperSource",city[2])));
+    }
+}
+
+bool Dataset::removeR_Or_PS_Effects(Graph<string> g, string v, list<vector<string>> rawCities){
+    g.removeVertex(v);
+
+    map<string, double> waterSupply;
+    int r = 0;
+
+    for(vector<string> city : rawCities){
+        waterSupply.insert(make_pair(city[2], edmondsKarp(g,"SuperSource",city[2])));
     }
 
     auto it = waterSupply.begin();
