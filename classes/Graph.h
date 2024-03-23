@@ -27,6 +27,7 @@ public:
     bool isVisited() const;
     bool isProcessing() const;
     unsigned int getIndegree() const;
+    unsigned int getOutdegree() const;
     double getDist() const;
     Edge<T> *getPath() const;
     std::vector<Edge<T> *> getIncoming() const;
@@ -35,6 +36,7 @@ public:
     void setVisited(bool visited);
     void setProcesssing(bool processing);
     void setIndegree(unsigned int indegree);
+    void setOutdegree(unsigned int outdegree);
     void setDist(double dist);
     void setPath(Edge<T> *path);
     Edge<T> * addEdge(Vertex<T> *dest, double w);
@@ -48,6 +50,7 @@ protected:
     bool visited = false; // used by DFS, BFS, Prim ...
     bool processing = false; // used by isDAG (in addition to the visited attribute)
     unsigned int indegree; // used by topsort
+    unsigned int outdegree;
     double dist = 0;
     Edge<T> *path = nullptr;
     std::vector<Edge<T> *> incoming; // incoming edges
@@ -124,6 +127,7 @@ public:
     bool isDAG() const;
     bool dfsIsDAG(Vertex<T> *v) const;
     std::vector<T> topsort() const;
+    void calculateOutdegrees() const;
 protected:
     std::vector<Vertex<T> *> vertexSet;    // vertex set
 
@@ -209,6 +213,11 @@ unsigned int Vertex<T>::getIndegree() const {
 }
 
 template <class T>
+unsigned int Vertex<T>::getOutdegree() const {
+    return this->outdegree;
+}
+
+template <class T>
 double Vertex<T>::getDist() const {
     return this->dist;
 }
@@ -241,6 +250,11 @@ void Vertex<T>::setProcesssing(bool processing) {
 template <class T>
 void Vertex<T>::setIndegree(unsigned int indegree) {
     this->indegree = indegree;
+}
+
+template <class T>
+void Vertex<T>::setIndegree(unsigned int indegree) {
+    this->outdegree = outdegree;
 }
 
 template <class T>
@@ -571,6 +585,18 @@ std::vector<T> Graph<T>::topsort() const {
     }
 
     return res;
+}
+
+template <class T>
+void Graph<T>::calculateOutdegrees() const {
+    for(Vertex<T> * v: vertexSet){
+        v.setOutdegree(0);
+    }
+
+    for(Vertex<T>* v: vertexSet){
+        unsigned int out = v->getAdj().size();
+        v->setOutdegree(out);
+    }
 }
 
 inline void deleteMatrix(int **m, int n) {

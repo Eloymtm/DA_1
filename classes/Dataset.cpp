@@ -61,6 +61,16 @@ void Dataset::loadSuperSource(){
     }
 }
 
+void Dataset::loadSuperSink(){
+    network.addVertex("SuperSink");
+    Vertex<string>* superSink = network.findVertex("SuperSink");
+    for(Vertex<string>* v: network.getVertexSet()){
+        if(v->getOutdegree() == 0){
+            superSink->addEdge(v, INF);
+        }
+    }
+}
+
 void Dataset::testAndVisit(std::queue< Vertex<string>*> &q, Edge<string> *e, Vertex<string> *w, double residual) {
     if (! w->isVisited() && residual > 0) {
         w->setVisited(true);
@@ -276,3 +286,63 @@ bool Dataset::removePipeline_Effects(Graph<string> g, string pointA, string poin
     return true;
 }
 
+
+template <class T>
+Metrics Dataset::getMetrics(Graph<T>* graph){
+    double total_difference = 0;
+    double average = 0;
+    vector<double> differences;
+    double max_dif = 0;
+    bfs(graph, GetSuperSource(), differences);
+    for(double dif : differences){
+        total_difference += dif;
+        if(dif > max_dif) max_dif = dif;
+    }
+    average = max_dif / differences.size();
+    double sum = 0.0;
+    for(int i = 0; i < differences.size(); i++){
+        sum += pow(differences[i]- average, 2);
+    }
+    double variance = sum/ differences.size();
+
+    return {average, variance, max_dif};
+}
+
+template <class T>
+std::vector<T> Dataset::metrics_Bfs(Graph<T>* g, const T & source, vector<double>& diffs) const {
+    std::vector<int> res;
+    // Get the source vertex
+    auto s = findVertex(source);
+    if (s == nullptr) {
+        return res;
+    }
+
+    // Set that no vertex has been visited yet
+    for (auto v : vertexSet) {
+        v->setVisited(false);
+    }
+
+    // Perform the actual BFS using a queue
+    std::queue<Vertex<T> *> q;
+    q.push(s);
+    s->setVisited(true);
+    while (!q.empty()) {
+        auto v = q.front();
+        q.pop();
+        res.push_back(v->getInfo());
+        for (auto & e : v->getAdj()) {
+            auto w = e->getDest();
+            if ( ! w->isVisited()) {
+                diffs.push_back(e.getWeight() -  e.getFlow());
+                q.push(w);
+                w->setVisited(true);
+            }
+        }
+    }
+    return res;
+}
+
+template <class T>
+void Dataset::balanceNetwork(Graph<T> graph, Metrics metrics){
+    edmondsKarp(g, loadSuperSource(), loadSuperSink());
+}

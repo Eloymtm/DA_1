@@ -24,6 +24,7 @@ class Dataset {
         void loadCities(list<vector<string>> rawCities);
         void loadPipes(list<vector<string>> rawPipes);
         void loadSuperSource();
+        void loadSuperSink();
 
         double edmondsKarp(Graph<string> g,string source, string target);
         void testAndVisit(std::queue< Vertex<string>*> &q, Edge<string> *e, Vertex<string> *w, double residual);
@@ -37,6 +38,15 @@ class Dataset {
         bool removeR_Or_PS_Effects(Graph<string> g, string v, list<vector<string>> rawCities);
 
         bool removePipeline_Effects(Graph<string> g, string pointA, string pointB, list<vector<string>> rawCities);
+
+        struct Metrics {
+            double average;
+            double variance;
+            double max_difference;
+        };
+        Metrics getMetrics(Graph<T>* graph);
+        std::vector<T> metrics_Bfs(Graph<T>* g, const T & source, vector<double>& diffs) const
+        void balanceNetwork(Graph<T> graph, Metrics metrics);
 
         Graph<string> getNetwork() const;
 };
