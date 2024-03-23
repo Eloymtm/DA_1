@@ -44,9 +44,9 @@ class Dataset {
             double variance;
             double max_difference;
         };
-        Metrics getMetrics(Graph<T>* graph);
+        Metrics getMetrics();
         std::vector<T> metrics_Bfs(Graph<T>* g, const T & source, vector<double>& diffs) const
-        void balanceNetwork(Graph<T> graph, Metrics metrics);
+        void balanceNetwork();
 
         Graph<string> getNetwork() const;
 };

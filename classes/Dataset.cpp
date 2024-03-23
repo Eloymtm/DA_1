@@ -288,12 +288,13 @@ bool Dataset::removePipeline_Effects(Graph<string> g, string pointA, string poin
 
 
 template <class T>
-Metrics Dataset::getMetrics(Graph<T>* graph){
+Metrics Dataset::getMetrics(){
+    Metrics res;
     double total_difference = 0;
     double average = 0;
     vector<double> differences;
     double max_dif = 0;
-    bfs(graph, GetSuperSource(), differences);
+    bfs(network, loadSuperSource(), differences);
     for(double dif : differences){
         total_difference += dif;
         if(dif > max_dif) max_dif = dif;
@@ -305,7 +306,10 @@ Metrics Dataset::getMetrics(Graph<T>* graph){
     }
     double variance = sum/ differences.size();
 
-    return {average, variance, max_dif};
+    res.average = average;
+    res.variance = variance;
+    res.max_difference = max_dif
+    return res;
 }
 
 template <class T>
@@ -343,6 +347,35 @@ std::vector<T> Dataset::metrics_Bfs(Graph<T>* g, const T & source, vector<double
 }
 
 template <class T>
-void Dataset::balanceNetwork(Graph<T> graph, Metrics metrics){
+void Dataset::balanceNetwork(){
+    Metrics initialMetrics = getMetrics();
     edmondsKarp(g, loadSuperSource(), loadSuperSink());
+    std::unordered_map<Edge<T>*, int> overloadedPipesFlow;
+    for(Vertex<T>* v: network.getVertexSet()){
+        Edge<T>* currentPath = v->getPath();
+        if(currentPath->getFlow() > currentPath->getWeight()){
+            overloadedPipesFlow[currentPath] = currentPath->getFlow() - currentPath->getWeight();
+        }
+    }
+    for(std::pair<Edge<T>*, int> p: overloadedPipesFlow){
+        Vertex<T>* origVertex = p.first->getOrig();
+        Vertex<T>* destVertex = p.first->getDest();
+        while(p.second > 0){
+            for(Edge<T>* e: origVertex->getAdj()){
+                if(e->getFlow() < e->getWeight() && e->getDest() != destVertex){
+                    double remaining = e->getWeight() - e->getFlow();
+                    if(remaining - p.second > 0 ) {
+                        e->setFlow(e->getFlow() + p.second);
+                        p.second = 0;
+                        break;
+                    }
+                    else{
+                        e->getFlow(e->getWeight());
+                        p.second -= remaining;
+                    }
+                }
+            }
+        }
+    }
+    Metrics newMetrics = getMetrics();
 }
