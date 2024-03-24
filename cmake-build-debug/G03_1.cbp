@@ -97,6 +97,12 @@
 		<Unit filename="/home/eloy_mm2004/Desktop/2ano_2semestre/DA/G03_1/classes/Graph.h">
 			<Option target="G03_1"/>
 		</Unit>
+		<Unit filename="/home/eloy_mm2004/Desktop/2ano_2semestre/DA/G03_1/classes/Menu.cpp">
+			<Option target="G03_1"/>
+		</Unit>
+		<Unit filename="/home/eloy_mm2004/Desktop/2ano_2semestre/DA/G03_1/classes/Menu.h">
+			<Option target="G03_1"/>
+		</Unit>
 		<Unit filename="/home/eloy_mm2004/Desktop/2ano_2semestre/DA/G03_1/classes/Parser.cpp">
 			<Option target="G03_1"/>
 		</Unit>

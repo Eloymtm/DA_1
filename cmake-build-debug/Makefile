@@ -177,6 +177,30 @@ classes/Dataset.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/G03_1.dir/build.make CMakeFiles/G03_1.dir/classes/Dataset.cpp.s
 .PHONY : classes/Dataset.cpp.s
 
+classes/Menu.o: classes/Menu.cpp.o
+.PHONY : classes/Menu.o
+
+# target to build an object file
+classes/Menu.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/G03_1.dir/build.make CMakeFiles/G03_1.dir/classes/Menu.cpp.o
+.PHONY : classes/Menu.cpp.o
+
+classes/Menu.i: classes/Menu.cpp.i
+.PHONY : classes/Menu.i
+
+# target to preprocess a source file
+classes/Menu.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/G03_1.dir/build.make CMakeFiles/G03_1.dir/classes/Menu.cpp.i
+.PHONY : classes/Menu.cpp.i
+
+classes/Menu.s: classes/Menu.cpp.s
+.PHONY : classes/Menu.s
+
+# target to generate assembly for a file
+classes/Menu.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/G03_1.dir/build.make CMakeFiles/G03_1.dir/classes/Menu.cpp.s
+.PHONY : classes/Menu.cpp.s
+
 classes/Parser.o: classes/Parser.cpp.o
 .PHONY : classes/Parser.o
 
@@ -288,6 +312,9 @@ help:
 	@echo "... classes/Dataset.o"
 	@echo "... classes/Dataset.i"
 	@echo "... classes/Dataset.s"
+	@echo "... classes/Menu.o"
+	@echo "... classes/Menu.i"
+	@echo "... classes/Menu.s"
 	@echo "... classes/Parser.o"
 	@echo "... classes/Parser.i"
 	@echo "... classes/Parser.s"

@@ -16,13 +16,17 @@ class Dataset {
         unordered_map<string, Station> stations;
         unordered_map<string, Reservoir> reservoirs;
         unordered_map<string, double> cityMaxFlowOriginalGraph;
+        list<vector<string>> rawReservoirs;
+        list<vector<string>> rawStations;
+        list<vector<string>> rawCities;
+        list<vector<string>> rawPipes;
     public:
         Dataset();
         Dataset(list<vector<string>> rawReservoirs, list<vector<string>> rawStations, list<vector<string>> rawCities, list<vector<string>> rawPipes);
-        void loadReservoirs(list<vector<string>> rawReservoirs);
-        void loadStations(list<vector<string>> rawStations);
-        void loadCities(list<vector<string>> rawCities);
-        void loadPipes(list<vector<string>> rawPipes);
+        void loadReservoirs();
+        void loadStations();
+        void loadCities();
+        void loadPipes();
         void loadSuperSource();
 
         double edmondsKarp(string source, string target);
@@ -34,9 +38,9 @@ class Dataset {
         bool waterNeeds(list<vector<string>> rawCities);
         void cityMaxFlowMap(list<vector<string>> rawCities);
         double maxFlow();
-        bool removeR_Or_PS_Effects(string v, list<vector<string>> rawCities);
+        bool removeR_Or_PS_Effects(string v);
 
-        bool removePipeline_Effects(string pointA, string pointB, list<vector<string>> rawCities);
+        bool removePipeline_Effects(string pointA, string pointB);
 
         Graph<string> getNetwork() const;
 };

@@ -3,6 +3,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/G03_1.dir/classes/City.cpp.o.d"
   "CMakeFiles/G03_1.dir/classes/Dataset.cpp.o"
   "CMakeFiles/G03_1.dir/classes/Dataset.cpp.o.d"
+  "CMakeFiles/G03_1.dir/classes/Menu.cpp.o"
+  "CMakeFiles/G03_1.dir/classes/Menu.cpp.o.d"
   "CMakeFiles/G03_1.dir/classes/Parser.cpp.o"
   "CMakeFiles/G03_1.dir/classes/Parser.cpp.o.d"
   "CMakeFiles/G03_1.dir/classes/Reservoir.cpp.o"
