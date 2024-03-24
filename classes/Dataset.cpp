@@ -312,6 +312,11 @@ Metrics Dataset::getMetrics(){
     return res;
 }
 
+
+/*
+ * Tempered bfs t fill 'diffs vector' to calculate the metrics
+ * TODO: maybe chance the name/place of the function, though about just using the normal bfs but would require using a empty vec everytine we want to use the bfs
+ */
 template <class T>
 std::vector<T> Dataset::metrics_Bfs(Graph<T>* g, const T & source, vector<double>& diffs) const {
     std::vector<int> res;
@@ -347,29 +352,29 @@ std::vector<T> Dataset::metrics_Bfs(Graph<T>* g, const T & source, vector<double
 }
 
 template <class T>
-void Dataset::balanceNetwork(){
-    Metrics initialMetrics = getMetrics();
-    edmondsKarp(g, loadSuperSource(), loadSuperSink());
-    std::unordered_map<Edge<T>*, int> overloadedPipesFlow;
-    for(Vertex<T>* v: network.getVertexSet()){
+void Dataset::balanceNetwork(){ //void but could be changed to return Metrics if it eases the menu stuff
+    edmondsKarp(g, loadSuperSource(), loadSuperSink()); //get paths
+    std::unordered_map<Edge<T>*, int> overloadedPipesFlow; //map of overflowing edges -> amount of overflow
+    for(Vertex<T>* v: network.getVertexSet()){  //fill the map talked above
         Edge<T>* currentPath = v->getPath();
         if(currentPath->getFlow() > currentPath->getWeight()){
             overloadedPipesFlow[currentPath] = currentPath->getFlow() - currentPath->getWeight();
         }
     }
-    for(std::pair<Edge<T>*, int> p: overloadedPipesFlow){
+
+    for(std::pair<Edge<T>*, int> p: overloadedPipesFlow){ //loop through the overloaded paths
         Vertex<T>* origVertex = p.first->getOrig();
         Vertex<T>* destVertex = p.first->getDest();
-        while(p.second > 0){
+        while(p.second > 0){ //while the path still has overflown flow
             for(Edge<T>* e: origVertex->getAdj()){
-                if(e->getFlow() < e->getWeight() && e->getDest() != destVertex){
-                    double remaining = e->getWeight() - e->getFlow();
-                    if(remaining - p.second > 0 ) {
+                if(e->getFlow() < e->getWeight() && e->getDest() != destVertex){ //guarantee we dont match overflowing pipe with itself
+                    double remaining = e->getWeight() - e->getFlow(); //remaining available flow in a pipe
+                    if(remaining - p.second > 0 ) { //in case all the overflow fits inside just one path...
                         e->setFlow(e->getFlow() + p.second);
                         p.second = 0;
                         break;
                     }
-                    else{
+                    else{ //...otherwise
                         e->getFlow(e->getWeight());
                         p.second -= remaining;
                     }
@@ -377,5 +382,5 @@ void Dataset::balanceNetwork(){
             }
         }
     }
-    Metrics newMetrics = getMetrics();
+    Metrics newMetrics = getMetrics(); //get metrics after balancing is done to afterwards compare
 }
