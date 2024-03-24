@@ -72,9 +72,52 @@ void Menu::maxFlowMenu(Dataset &objDataset) {
             break;
         }
     }
-
-
 }
+
+void Menu::isWaterSufficient(Dataset &objDataset) {
+    clearScreen();
+    bool res = objDataset.waterNeeds();
+    clearScreen(); //testar de da clear rapido o suficiente
+
+    switch (res) {
+        case true: {
+            cout << "\033[1;32m";
+            cout << "==================================" << endl;
+            cout << "|     **  Is water enough? **     |" << endl;
+            cout << "==================================" << endl;
+            cout << "|    At the moment our network    |" << endl;
+            cout << "|    is capable of fulfilling     |" << endl;
+            cout << "|    every city's water needs!    |" << endl;
+            cout << "|                                 |" << endl;
+            cout << "==================================" << endl;
+            cout << "\033[0m";
+            break;
+        }
+        case false:{
+            cout << "\033[1;32m";
+            cout << "==================================" << endl;
+            cout << "|     **  Is water enough? **     |" << endl;
+            cout << "==================================" << endl;
+            cout << "|    At the moment our network    |" << endl;
+            cout << "|   isn't capable of fulfilling   |" << endl;
+            cout << "|    every city's water needs!    |" << endl;
+            cout << "|                                 |" << endl;
+            cout << "|    The cities we can't give     |" << endl;
+            cout << "|   the desired flow right now:   |" << endl;
+
+            objDataset.waterNeeds();
+
+            cout << "==================================" << endl;
+            cout << "\033[0m";
+            break;
+        }
+
+    }
+
+    clearScreen();
+}
+
+
 void Menu::wait(Dataset &objDataset) {
     string o;
     cout << "Press ENTER to continue...";
