@@ -1,7 +1,7 @@
 CMakeFiles/G03_1.dir/main.cpp.o: \
- /home/eloy_mm2004/Desktop/2ano_2semestre/DA/PROJ_1/main.cpp \
+ /home/eloy_mm2004/Desktop/2ano_2semestre/DA/G03_1/main.cpp \
  /usr/include/stdc-predef.h \
- /home/eloy_mm2004/Desktop/2ano_2semestre/DA/PROJ_1/classes/Parser.h \
+ /home/eloy_mm2004/Desktop/2ano_2semestre/DA/G03_1/classes/Parser.h \
  /usr/include/c++/11/string \
  /usr/include/x86_64-linux-gnu/c++/11/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/11/bits/os_defines.h \
@@ -162,8 +162,8 @@ CMakeFiles/G03_1.dir/main.cpp.o: \
  /usr/include/x86_64-linux-gnu/c++/11/bits/basic_file.h \
  /usr/include/x86_64-linux-gnu/c++/11/bits/c++io.h \
  /usr/include/c++/11/bits/fstream.tcc \
- /home/eloy_mm2004/Desktop/2ano_2semestre/DA/PROJ_1/classes/Dataset.h \
- /home/eloy_mm2004/Desktop/2ano_2semestre/DA/PROJ_1/classes/Graph.h \
+ /home/eloy_mm2004/Desktop/2ano_2semestre/DA/G03_1/classes/Dataset.h \
+ /home/eloy_mm2004/Desktop/2ano_2semestre/DA/G03_1/classes/Graph.h \
  /usr/include/c++/11/iostream /usr/include/c++/11/queue \
  /usr/include/c++/11/deque /usr/include/c++/11/bits/stl_deque.h \
  /usr/include/c++/11/bits/deque.tcc /usr/include/c++/11/bits/stl_heap.h \
@@ -187,6 +187,6 @@ CMakeFiles/G03_1.dir/main.cpp.o: \
  /usr/include/c++/11/bits/unordered_map.h \
  /usr/include/c++/11/bits/erase_if.h \
  /usr/include/c++/11/pstl/execution_defs.h \
- /home/eloy_mm2004/Desktop/2ano_2semestre/DA/PROJ_1/classes/City.h \
- /home/eloy_mm2004/Desktop/2ano_2semestre/DA/PROJ_1/classes/Station.h \
- /home/eloy_mm2004/Desktop/2ano_2semestre/DA/PROJ_1/classes/Reservoir.h
+ /home/eloy_mm2004/Desktop/2ano_2semestre/DA/G03_1/classes/City.h \
+ /home/eloy_mm2004/Desktop/2ano_2semestre/DA/G03_1/classes/Station.h \
+ /home/eloy_mm2004/Desktop/2ano_2semestre/DA/G03_1/classes/Reservoir.h

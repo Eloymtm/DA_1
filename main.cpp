@@ -14,8 +14,8 @@ int main() {
     list<vector<string>> rawPipes = parser.readFile("../dataset/ds/Pipes.csv");
 
     Dataset dataset = Dataset(rawReservoirs, rawStations, rawCities, rawPipes);
-
-    cout << dataset.getNetwork().getNumVertex();
+    cout << dataset.edmondsKarp("SuperSource", "C_17");
+    //cout << dataset.getNetwork().getNumVertex();
 
     return 0;
 }
