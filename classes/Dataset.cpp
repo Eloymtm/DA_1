@@ -17,6 +17,7 @@ Dataset::Dataset(list<vector<string>> rawReservoirs, list<vector<string>> rawSta
     loadCities();
     loadPipes();
     loadSuperSource();
+    loadSuperSink();
     cityMaxFlowMap(rawCities);
 }
 
@@ -65,6 +66,16 @@ void Dataset::loadSuperSource(){
     }
 }
 
+void Dataset::loadSuperSink(){
+    network.addVertex("SuperSink");
+    Vertex<string>* superSink = network.findVertex("SuperSink");
+    for(Vertex<string>* v: network.getVertexSet()){
+        if(v->getInfo().substr(0,1) == "C"){
+            v->addEdge(superSink,INF);
+        }
+    }
+}
+
 void Dataset::testAndVisit(std::queue< Vertex<string>*> &q, Edge<string> *e, Vertex<string> *w, double residual) {
     if (! w->isVisited() && residual > 0) {
         w->setVisited(true);
@@ -73,8 +84,8 @@ void Dataset::testAndVisit(std::queue< Vertex<string>*> &q, Edge<string> *e, Ver
     }
 }
 
-bool Dataset::findAugmentingPath( Vertex<string> *s, Vertex<string> *t) {
-    for(auto v : this->network.getVertexSet()) {
+bool Dataset::findAugmentingPath(Graph<string> g, Vertex<string> *s, Vertex<string> *t) {
+    for(auto v : g.getVertexSet()) {
         v->setVisited(false);
     }
 
@@ -131,22 +142,22 @@ void Dataset::augmentFlowAlongPath(Vertex<string> *s, Vertex<string> *t, double 
     }
 }
 
-double Dataset::edmondsKarp(string source, string target) {
-    Vertex<string>* s = this->network.findVertex(source);
-    Vertex<string>* t = this->network.findVertex(target);
+double Dataset::edmondsKarp(Graph<string> g,string source, string target) {
+    Vertex<string>* s = g.findVertex(source);
+    Vertex<string>* t = g.findVertex(target);
 
     double maxFlow = 0;
 
     if (s == nullptr || t == nullptr || s == t)
         throw std::logic_error("Invalid source and/or target vertex");
 
-    for (auto v : this->network.getVertexSet()) {
+    for (auto v : g.getVertexSet()) {
         for (auto e: v->getAdj()) {
             e->setFlow(0);
         }
     }
 
-    while( findAugmentingPath(s, t) ) {
+    while( findAugmentingPath(g, s, t) ) {
         double f = findMinResidualAlongPath(s, t);
         maxFlow += f;
         augmentFlowAlongPath(s, t, f);
@@ -155,12 +166,22 @@ double Dataset::edmondsKarp(string source, string target) {
     return maxFlow;
 }
 
-bool Dataset::waterNeeds(list<vector<string>> rawCities){
+bool Dataset::waterNeeds(Graph<string> g,list<vector<string>> rawCities){
     map<string, double> waterSupply;
     int r = 0;
 
+    edmondsKarp(g, "SuperSource", "SuperSink");
+
     for(vector<string> city : rawCities){
-        waterSupply.insert(make_pair(city[2], edmondsKarp("SuperSource",city[2])));
+        double maxFlow = 0;
+        for(Vertex<string>* v : g.getVertexSet()){
+            for(auto e : v->getAdj()){
+                if(e->getDest()->getInfo() == city[2]){
+                    maxFlow += e->getFlow();
+                }
+            }
+        }
+        waterSupply.insert(make_pair(city[2], maxFlow));
     }
 
     auto it = waterSupply.begin();
@@ -181,8 +202,18 @@ bool Dataset::waterNeeds(list<vector<string>> rawCities){
 }
 
 void Dataset::cityMaxFlowMap(list<vector<string>> rawCities){
+    edmondsKarp(network,"SuperSource", "SuperSink");
+
     for(vector<string> city : rawCities){
-        cityMaxFlowOriginalGraph.insert(make_pair(city[2], edmondsKarp("SuperSource",city[2])));
+        double maxFlow = 0;
+        for(Vertex<string>* v : network.getVertexSet()){
+            for(auto e : v->getAdj()){
+                if(e->getDest()->getInfo() == city[2]){
+                    maxFlow += e->getFlow();
+                }
+            }
+        }
+        cityMaxFlowOriginalGraph.insert(make_pair(city[2], maxFlow));
     }
 }
 
@@ -198,17 +229,27 @@ double Dataset::maxFlow(){
     return r;
 }
 
-bool Dataset::removeR_Or_PS_Effects(string v){
-    this->network.removeVertex(v);
+bool Dataset::removeR_Or_PS_Effects(Graph<string> g,string v){
+    g.removeVertex(v);
 
     unordered_map<string, double> waterSupply;
     int r = 0;
 
+    edmondsKarp(g,"SuperSource", "SuperSink");
+
     for(vector<string> city : rawCities){
-        waterSupply.insert(make_pair(city[2], edmondsKarp("SuperSource",city[2])));
+        double maxFlow = 0;
+        for(Vertex<string>* x : g.getVertexSet()){
+            for(auto e : x->getAdj()){
+                if(e->getDest()->getInfo() == city[2]){
+                    maxFlow += e->getFlow();
+                }
+            }
+        }
+        waterSupply.insert(make_pair(city[2], maxFlow));
     }
 
-    cout << "Total deficit:\n";
+    cout << "Total deficit according to the Demand:\n";
     auto it = waterSupply.begin();
     while(it != waterSupply.end()){
         auto city = cities.find(it->first);
@@ -236,7 +277,7 @@ bool Dataset::removeR_Or_PS_Effects(string v){
     return true;
 }
 
-bool Dataset::removePipeline_Effects(string pointA, string pointB){
+bool Dataset::removePipeline_Effects(Graph<string> g, string pointA, string pointB){
     for(auto v : this->network.getVertexSet()){
         for(auto e : v->getAdj()){
             if(e->getOrig()->getInfo() == pointA && e->getDest()->getInfo() == pointB){
@@ -248,11 +289,21 @@ bool Dataset::removePipeline_Effects(string pointA, string pointB){
     unordered_map<string, double> waterSupply;
     int r = 0;
 
+    edmondsKarp(g,"SuperSource", "SuperSink");
+
     for(vector<string> city : rawCities){
-        waterSupply.insert(make_pair(city[2], edmondsKarp("SuperSource",city[2])));
+        double maxFlow = 0;
+        for(Vertex<string>* x : g.getVertexSet()){
+            for(auto e : x->getAdj()){
+                if(e->getDest()->getInfo() == city[2]){
+                    maxFlow += e->getFlow();
+                }
+            }
+        }
+        waterSupply.insert(make_pair(city[2], maxFlow));
     }
 
-    cout << "Total deficit:\n";
+    cout << "Total deficit according to the Demand:\n";
     auto it = waterSupply.begin();
     while(it != waterSupply.end()){
         auto city = cities.find(it->first);

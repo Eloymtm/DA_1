@@ -91,7 +91,7 @@ void Menu::maxFlowMenu(Dataset &objDataset) {
             string cidade;
             cout << "Introduza destino final: ";
             cin >> cidade;
-            objDataset.edmondsKarp("SuperSource", cidade);
+            objDataset.edmondsKarp(objDataset.getNetwork(),"SuperSource", cidade);
             break;
         }
         case 2:{
@@ -101,7 +101,7 @@ void Menu::maxFlowMenu(Dataset &objDataset) {
             cin >> cidadeinit;
             cout << "Introduza cidade final: ";
             cin >> cidadefinal;
-            objDataset.edmondsKarp(cidadeinit, cidadefinal);
+            objDataset.edmondsKarp(objDataset.getNetwork(),cidadeinit, cidadefinal);
             break;
         }
     }
@@ -185,14 +185,14 @@ void Menu::reliabilityMenu(Dataset &objDataset) {
             string reservoir;
             cout << "Reservoir: ";
             cin >> reservoir;
-            objDataset.removeR_Or_PS_Effects(reservoir);
+            objDataset.removeR_Or_PS_Effects(objDataset.getNetwork(),reservoir);
             break;
         }
         case 2:{
             string PumpingStation;
             cout << "Pumping Station: ";
             cin >> PumpingStation;
-            objDataset.removeR_Or_PS_Effects(PumpingStation);
+            objDataset.removeR_Or_PS_Effects(objDataset.getNetwork(),PumpingStation);
             break;
         }
         case 3:{
@@ -202,7 +202,7 @@ void Menu::reliabilityMenu(Dataset &objDataset) {
             cin >> pipelineOrig;
             cout << "Pipeline Destiny: ";
             cin >> pipelineDest;
-            objDataset.removePipeline_Effects(pipelineOrig, pipelineDest);
+            objDataset.removePipeline_Effects(objDataset.getNetwork(),pipelineOrig, pipelineDest);
         }
     }
 }
