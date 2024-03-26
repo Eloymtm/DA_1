@@ -57,10 +57,10 @@ RM = /snap/clion/265/bin/cmake/linux/x64/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/eloy_mm2004/Desktop/2ano_2semestre/DA/PROJ_1
+CMAKE_SOURCE_DIR = /home/eloy_mm2004/Desktop/2ano_2semestre/DA/G03_1
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/eloy_mm2004/Desktop/2ano_2semestre/DA/PROJ_1/cmake-build-debug
+CMAKE_BINARY_DIR = /home/eloy_mm2004/Desktop/2ano_2semestre/DA/G03_1/cmake-build-debug
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -87,9 +87,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/eloy_mm2004/Desktop/2ano_2semestre/DA/PROJ_1/cmake-build-debug/CMakeFiles /home/eloy_mm2004/Desktop/2ano_2semestre/DA/PROJ_1/cmake-build-debug//CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/eloy_mm2004/Desktop/2ano_2semestre/DA/G03_1/cmake-build-debug/CMakeFiles /home/eloy_mm2004/Desktop/2ano_2semestre/DA/G03_1/cmake-build-debug//CMakeFiles/progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/eloy_mm2004/Desktop/2ano_2semestre/DA/PROJ_1/cmake-build-debug/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/eloy_mm2004/Desktop/2ano_2semestre/DA/G03_1/cmake-build-debug/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -176,6 +176,30 @@ classes/Dataset.s: classes/Dataset.cpp.s
 classes/Dataset.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/G03_1.dir/build.make CMakeFiles/G03_1.dir/classes/Dataset.cpp.s
 .PHONY : classes/Dataset.cpp.s
+
+classes/Menu.o: classes/Menu.cpp.o
+.PHONY : classes/Menu.o
+
+# target to build an object file
+classes/Menu.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/G03_1.dir/build.make CMakeFiles/G03_1.dir/classes/Menu.cpp.o
+.PHONY : classes/Menu.cpp.o
+
+classes/Menu.i: classes/Menu.cpp.i
+.PHONY : classes/Menu.i
+
+# target to preprocess a source file
+classes/Menu.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/G03_1.dir/build.make CMakeFiles/G03_1.dir/classes/Menu.cpp.i
+.PHONY : classes/Menu.cpp.i
+
+classes/Menu.s: classes/Menu.cpp.s
+.PHONY : classes/Menu.s
+
+# target to generate assembly for a file
+classes/Menu.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/G03_1.dir/build.make CMakeFiles/G03_1.dir/classes/Menu.cpp.s
+.PHONY : classes/Menu.cpp.s
 
 classes/Parser.o: classes/Parser.cpp.o
 .PHONY : classes/Parser.o
@@ -288,6 +312,9 @@ help:
 	@echo "... classes/Dataset.o"
 	@echo "... classes/Dataset.i"
 	@echo "... classes/Dataset.s"
+	@echo "... classes/Menu.o"
+	@echo "... classes/Menu.i"
+	@echo "... classes/Menu.s"
 	@echo "... classes/Parser.o"
 	@echo "... classes/Parser.i"
 	@echo "... classes/Parser.s"

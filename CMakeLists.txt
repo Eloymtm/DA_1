@@ -35,4 +35,6 @@ add_executable(G03_1 main.cpp
         classes/Graph.h
         classes/Dataset.cpp
         classes/Dataset.h
+        classes/Menu.cpp
+        classes/Menu.h
 )

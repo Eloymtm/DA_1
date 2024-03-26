@@ -16,27 +16,31 @@ class Dataset {
         unordered_map<string, Station> stations;
         unordered_map<string, Reservoir> reservoirs;
         unordered_map<string, double> cityMaxFlowOriginalGraph;
+        list<vector<string>> rawReservoirs;
+        list<vector<string>> rawStations;
+        list<vector<string>> rawCities;
+        list<vector<string>> rawPipes;
     public:
         Dataset();
         Dataset(list<vector<string>> rawReservoirs, list<vector<string>> rawStations, list<vector<string>> rawCities, list<vector<string>> rawPipes);
-        void loadReservoirs(list<vector<string>> rawReservoirs);
-        void loadStations(list<vector<string>> rawStations);
-        void loadCities(list<vector<string>> rawCities);
-        void loadPipes(list<vector<string>> rawPipes);
+        void loadReservoirs();
+        void loadStations();
+        void loadCities();
+        void loadPipes();
         void loadSuperSource();
 
-        double edmondsKarp(Graph<string> g,string source, string target);
+        double edmondsKarp(string source, string target);
         void testAndVisit(std::queue< Vertex<string>*> &q, Edge<string> *e, Vertex<string> *w, double residual);
-        bool findAugmentingPath(Graph<string> g, Vertex<string> *s, Vertex<string> *t);
+        bool findAugmentingPath(Vertex<string> *s, Vertex<string> *t);
         double findMinResidualAlongPath(Vertex<string> *s, Vertex<string> *t);
         void augmentFlowAlongPath(Vertex<string> *s, Vertex<string> *t, double f);
 
         bool waterNeeds(list<vector<string>> rawCities);
         void cityMaxFlowMap(list<vector<string>> rawCities);
         double maxFlow();
-        bool removeR_Or_PS_Effects(Graph<string> g, string v, list<vector<string>> rawCities);
+        bool removeR_Or_PS_Effects(string v);
 
-        bool removePipeline_Effects(Graph<string> g, string pointA, string pointB, list<vector<string>> rawCities);
+        bool removePipeline_Effects(string pointA, string pointB);
 
         Graph<string> getNetwork() const;
 };
