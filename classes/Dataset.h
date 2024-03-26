@@ -28,19 +28,20 @@ class Dataset {
         void loadCities();
         void loadPipes();
         void loadSuperSource();
+        void loadSuperSink();
 
-        double edmondsKarp(string source, string target);
+        double edmondsKarp(Graph<string> g, string source, string target);
         void testAndVisit(std::queue< Vertex<string>*> &q, Edge<string> *e, Vertex<string> *w, double residual);
-        bool findAugmentingPath(Vertex<string> *s, Vertex<string> *t);
+        bool findAugmentingPath(Graph<string> g, Vertex<string> *s, Vertex<string> *t);
         double findMinResidualAlongPath(Vertex<string> *s, Vertex<string> *t);
         void augmentFlowAlongPath(Vertex<string> *s, Vertex<string> *t, double f);
 
-        bool waterNeeds(list<vector<string>> rawCities);
+        bool waterNeeds(Graph<string> g, list<vector<string>> rawCities);
         void cityMaxFlowMap(list<vector<string>> rawCities);
         double maxFlow();
-        bool removeR_Or_PS_Effects(string v);
+        bool removeR_Or_PS_Effects(Graph<string> g, string v);
 
-        bool removePipeline_Effects(string pointA, string pointB);
+        bool removePipeline_Effects(Graph<string> g, string pointA, string pointB);
 
         Graph<string> getNetwork() const;
 };
