@@ -331,3 +331,104 @@ bool Dataset::removePipeline_Effects(Graph<string> g, string pointA, string poin
     return true;
 }
 
+Metrics Dataset::getMetrics(Graph<string> g){
+    Metrics res;
+    double total_difference = 0;
+    double average = 0;
+    vector<double> differences;
+    double max_dif = 0;
+    metrics_Bfs(g, "SuperSource", differences);
+    for(double dif : differences){
+        total_difference += dif;
+        if(dif > max_dif) max_dif = dif;
+    }
+    average = max_dif / differences.size();
+    double sum = 0.0;
+    for(int i = 0; i < differences.size(); i++){
+        sum += pow(differences[i]- average, 2);
+    }
+    double variance = sum/ differences.size();
+
+    res.average = average;
+    res.variance = variance;
+    res.max_difference = max_dif;
+    return res;
+}
+
+
+/*
+ * Tempered bfs t fill 'diffs vector' to calculate the metrics
+ * TODO: maybe chance the name/place of the function, though about just using the normal bfs but would require using a empty vec everytine we want to use the bfs
+ */
+vector<string> Dataset::metrics_Bfs(Graph<string> g, const string & source, vector<double>& diffs) const {
+    vector<string> res;
+    // Get the source vertex
+    auto s = g.findVertex(source);
+    if (s == nullptr) {
+        return res;
+    }
+
+    // Set that no vertex has been visited yet
+    for (auto v : g.getVertexSet()) {
+        v->setVisited(false);
+    }
+
+    // Perform the actual BFS using a queue
+    std::queue<Vertex<string> *> q;
+    q.push(s);
+    s->setVisited(true);
+    while (!q.empty()) {
+        auto v = q.front();
+        q.pop();
+        res.push_back(v->getInfo());
+        for (auto & e : v->getAdj()) {
+            auto w = e->getDest();
+            if ( ! w->isVisited()) {
+                diffs.push_back(e->getWeight() -  e->getFlow());
+                q.push(w);
+                w->setVisited(true);
+            }
+        }
+    }
+    return res;
+}
+
+void Dataset::balanceNetwork(Graph<string> g){ //void but could be changed to return Metrics if it eases the menu stuff
+    edmondsKarp(g, "SuperSource", "SuperSink"); //get paths
+    unordered_map<Edge<string>*, int> overloadedPipesFlow;//map of overflowing edges -> amount of overflow
+
+    Metrics oldMetrics = getMetrics(g);
+    cout << "Actual average = " << oldMetrics.average << " Actual maximum difference = " << oldMetrics.max_difference << " Actual variance = " << oldMetrics.variance;
+
+    for(Vertex<string>* v: g.getVertexSet()){  //fill the map talked above
+        Edge<string>* currentPath = v->getPath();
+        if(currentPath->getFlow() > currentPath->getWeight()){
+            overloadedPipesFlow[currentPath] = currentPath->getFlow() - currentPath->getWeight();
+        }
+    }
+
+    for(pair<Edge<string>*, int> p: overloadedPipesFlow){ //loop through the overloaded paths
+        Vertex<string>* origVertex = p.first->getOrig();
+        Vertex<string >* destVertex = p.first->getDest();
+        while(p.second > 0){ //while the path still has overflown flow
+            for(Edge<string>* e: origVertex->getAdj()){
+                if(e->getFlow() < e->getWeight() && e->getDest() != destVertex){ //guarantee we dont match overflowing pipe with itself
+                    double remaining = e->getWeight() - e->getFlow(); //remaining available flow in a pipe
+                    if(remaining - p.second > 0 ) { //in case all the overflow fits inside just one path...
+                        e->setFlow(e->getFlow() + p.second);
+                        p.second = 0;
+                        break;
+                    }
+                    else{ //...otherwise
+                        e->setFlow(e->getWeight());
+                        p.second -= remaining;
+                    }
+                }
+            }
+        }
+    }
+    Metrics newMetrics = getMetrics(g); //get metrics after balancing is done to afterwards compare
+
+    cout << "New average = " << newMetrics.average << " New maximum difference = " << newMetrics.max_difference << " New variance = " << newMetrics.variance;
+}
+
