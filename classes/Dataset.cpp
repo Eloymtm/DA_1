@@ -394,7 +394,7 @@ void Dataset::balanceNetwork(Graph<string> g){ //void but could be changed to re
         it++;
     }
 
-    for(auto p: overloadedCitiesFlow){ //loop through the overloaded paths
+    for(auto p: overloadedCitiesFlow){ //loop through the overloaded cities
         Vertex<string> *city = g.findVertex(p.first);
 
         for(auto e : city->getIncoming()){
