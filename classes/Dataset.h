@@ -7,6 +7,13 @@
 #include "Reservoir.h"
 #include <list>
 #include <unordered_map>
+#include <math.h>
+
+struct Metrics {
+    double average;
+    double variance;
+    double max_difference;
+};
 
 using namespace std;
 class Dataset {
@@ -39,8 +46,11 @@ class Dataset {
         bool waterNeeds(Graph<string> g, list<vector<string>> rawCities);
         void cityMaxFlowMap(list<vector<string>> rawCities);
         double maxFlow();
-        bool removeR_Or_PS_Effects(Graph<string> g, string v);
 
+        Metrics getMetrics(Graph<string> g);
+        void balanceNetwork(Graph<string> g);
+
+        bool removeR_Or_PS_Effects(Graph<string> g, string v);
         bool removePipeline_Effects(Graph<string> g, string pointA, string pointB);
 
         Graph<string> getNetwork() const;

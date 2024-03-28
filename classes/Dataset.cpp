@@ -331,3 +331,83 @@ bool Dataset::removePipeline_Effects(Graph<string> g, string pointA, string poin
     return true;
 }
 
+Metrics Dataset::getMetrics(Graph<string> g){
+    Metrics res;
+
+    double total_difference = 0;
+    double average = 0;
+    vector<double> differences;
+    double max_dif = 0;
+
+    for(auto v : g.getVertexSet()){
+        for(auto e : v->getAdj()){
+            if(e->getOrig()->getInfo() == "SuperSource" || e->getDest()->getInfo() == "SuperSink"){
+                e->setProcessed(true);
+            }
+            else{
+                e->setProcessed(false);
+            }
+        }
+    }
+
+    for(auto v : g.getVertexSet()){
+        for(auto e : v->getAdj()){
+            if(!e->isProcessed()){
+                double diff = abs(e->getWeight() - e->getFlow());
+                differences.push_back(diff);
+                total_difference += diff;
+                if(diff > max_dif){
+                    max_dif = diff;
+                }
+
+                e->setProcessed(true);
+            }
+        }
+    }
+
+    average = total_difference / ((double) differences.size());
+    double sumSquaredDifference = 0.0;
+    for(double difference : differences){
+        sumSquaredDifference += pow(difference- average, 2);
+    }
+    double variance = sumSquaredDifference / ((double) differences.size());
+
+    res.average = average;
+    res.variance = variance;
+    res.max_difference = max_dif;
+    return res;
+}
+
+void Dataset::balanceNetwork(Graph<string> g){ //void but could be changed to return Metrics if it eases the menu stuff
+    edmondsKarp(g, "SuperSource", "SuperSink"); //get paths
+    unordered_map<string , double> overloadedCitiesFlow;//map of overflowing cities -> amount of overflow
+
+    Metrics oldMetrics = getMetrics(g);
+    cout << "Actual average = " << oldMetrics.average << " Actual maximum difference = " << oldMetrics.max_difference << " Actual variance = " << oldMetrics.variance << "\n";
+
+    auto it = cityMaxFlowOriginalGraph.begin();
+    while(it != cityMaxFlowOriginalGraph.end()){
+        auto city = cities.find(it->first);
+        if(it->second > city->second.getDemand()){
+            overloadedCitiesFlow.insert(make_pair(it->first,it->second - city->second.getDemand()));
+        }
+        it++;
+    }
+
+    for(auto p: overloadedCitiesFlow){ //loop through the overloaded paths
+        Vertex<string> *city = g.findVertex(p.first);
+
+        for(auto e : city->getIncoming()){
+            if(p.second > 0){
+                city->addEdge(e->getOrig(),min(e->getWeight(), p.second));
+                p.second -= min(e->getWeight(), p.second);
+            }
+        }
+
+        edmondsKarp(g, p.first, "SuperSink");
+    }
+    Metrics newMetrics = getMetrics(g); //get metrics after balancing is done to afterwards compare
+
+    cout << "New average = " << newMetrics.average << " New maximum difference = " << newMetrics.max_difference << " New variance = " << newMetrics.variance;
+}
+

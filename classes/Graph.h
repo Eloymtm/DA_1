@@ -73,12 +73,15 @@ public:
     void setSelected(bool selected);
     void setReverse(Edge<T> *reverse);
     void setFlow(double flow);
+    bool isProcessed() const;
+    void setProcessed(bool v);
 protected:
     Vertex<T> * dest; // destination vertex
     double weight; // edge weight, can also be used for capacity
 
     // auxiliary fields
     bool selected = false;
+    bool processed = false;
 
     // used for bidirectional edges
     Vertex<T> *orig;
@@ -322,6 +325,16 @@ void Edge<T>::setReverse(Edge<T> *reverse) {
 template <class T>
 void Edge<T>::setFlow(double flow) {
     this->flow = flow;
+}
+
+template <class T>
+bool Edge<T>::isProcessed() const {
+    return this->processed;
+}
+
+template <class T>
+void Edge<T>::setProcessed(bool v) {
+    this->processed = v;
 }
 
 /********************** Graph  ****************************/
