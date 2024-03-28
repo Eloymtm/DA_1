@@ -341,7 +341,7 @@ Metrics Dataset::getMetrics(Graph<string> g){
 
     for(auto v : g.getVertexSet()){
         for(auto e : v->getAdj()){
-            if(e->getOrig()->getInfo() == "SuperSource" || e->getDest()->getInfo() == "SuperSink"){
+            if(e->getOrig()->getInfo() == "SuperSource" || e->getOrig()->getInfo().substr(0,1) == "C"){
                 e->setProcessed(true);
             }
             else{
