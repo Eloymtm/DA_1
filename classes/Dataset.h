@@ -48,7 +48,6 @@ class Dataset {
         double maxFlow();
 
         Metrics getMetrics(Graph<string> g);
-        vector<string> metrics_Bfs(Graph<string> g, const string & source, vector<double>& diffs) const;
         void balanceNetwork(Graph<string> g);
 
         bool removeR_Or_PS_Effects(Graph<string> g, string v);
