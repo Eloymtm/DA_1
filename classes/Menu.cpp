@@ -238,7 +238,8 @@ void Menu::isWaterSufficientMenu(Dataset &objDataset) {
     cout << "|      ** Water sufficient **     |" << endl;
     cout << "==================================" << endl;
     cout << "|   1. Is Water sufficient?       |" << endl;
-    cout << "|   2. Sair                       |" << endl;
+    cout << "|   2. List cities                |" << endl;
+    cout << "|   3. Sair                       |" << endl;
     cout << "==================================" << endl;
     cout << "\033[0m"; // Resetar a cor do texto
 
@@ -246,8 +247,11 @@ void Menu::isWaterSufficientMenu(Dataset &objDataset) {
 
     switch (choice) {
         case 1:{
-            objDataset.waterNeeds(objDataset.getNetwork(), )
+            objDataset.waterNeeds(objDataset.getNetwork(), objDataset.rawCities);
+            break;
         }
+        default:
+            break;
     }
 
 }
