@@ -53,7 +53,7 @@ void Menu::mainMenu(Dataset &objDataset) {
             break;
         }
         case 2:{
-            //isWaterSufficientMenu(objDataset);
+            isWaterSufficientMenu(objDataset);
             break;
         }
         case 3:{
@@ -228,6 +228,28 @@ void Menu::reliabilityMenu(Dataset &objDataset) {
             objDataset.removePipeline_Effects(objDataset.getNetwork(),pipelineOrig, pipelineDest);
         }
     }
+}
+void Menu::isWaterSufficientMenu(Dataset &objDataset) {
+    int choice;
+
+    clearScreen(); // Limpa a tela antes de exibir o menu
+    cout << "\033[1;32m"; // Define a cor verde brilhante para o texto
+    cout << "==================================" << endl;
+    cout << "|      ** Water sufficient **     |" << endl;
+    cout << "==================================" << endl;
+    cout << "|   1. Is Water sufficient?       |" << endl;
+    cout << "|   2. Sair                       |" << endl;
+    cout << "==================================" << endl;
+    cout << "\033[0m"; // Resetar a cor do texto
+
+    cin >> choice;
+
+    switch (choice) {
+        case 1:{
+            objDataset.waterNeeds(objDataset.getNetwork(), )
+        }
+    }
+
 }
 void Menu::wait(Dataset &objDataset) {
     string o;
