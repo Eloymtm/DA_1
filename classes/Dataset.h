@@ -14,10 +14,10 @@ struct Metrics {
     double variance;
     double max_difference;
 };
-
 using namespace std;
 class Dataset {
-    private:
+    friend class Menu;
+protected:
         Graph<string> network;
         unordered_map<string, City> cities;
         unordered_map<string, Station> stations;

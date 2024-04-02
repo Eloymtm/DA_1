@@ -53,7 +53,7 @@ void Menu::mainMenu(Dataset &objDataset) {
             break;
         }
         case 2:{
-            //isWaterSufficientMenu(objDataset);
+            isWaterSufficientMenu(objDataset);
             break;
         }
         case 3:{
@@ -89,21 +89,31 @@ void Menu::maxFlowMenu(Dataset &objDataset) {
     switch (choice) {
         case 1:{
             string cidade;
-            cout << "Introduza destino final: ";
+            cout << "Introduza destino final: \n(id = C_(1-22))\n";
             cin >> cidade;
-            objDataset.edmondsKarp(objDataset.getNetwork(),"SuperSource", cidade);
-            break;
+            if(cidade.substr(0, 2) == "C_"){
+                cout << objDataset.edmondsKarp(objDataset.getNetwork(),"SuperSource", cidade)<< endl;
+                break;
+            }
+            else{
+            cout << "Introduziu mal o ID da Cidade tente novamente"<< endl;
+            maxFlowMenu(objDataset);
+            }
         }
         case 2:{
             string cidadeinit;
             string cidadefinal;
             cout << "introduza cidade inicial: ";
             cin >> cidadeinit;
+
             cout << "Introduza cidade final: ";
             cin >> cidadefinal;
-            objDataset.edmondsKarp(objDataset.getNetwork(),cidadeinit, cidadefinal);
+            cout << objDataset.edmondsKarp(objDataset.getNetwork(),cidadeinit, cidadefinal) << endl;
             break;
         }
+        case 3:
+            cout << objDataset.edmondsKarp(objDataset.getNetwork(),"SuperSource", "SuperSink")<< endl;
+            break;
     }
 
 
@@ -183,17 +193,30 @@ void Menu::reliabilityMenu(Dataset &objDataset) {
     switch (choice) {
         case 1:{
             string reservoir;
-            cout << "Reservoir: ";
+            cout << "Reservoir: \n(id = R_(1-24))\n";
             cin >> reservoir;
-            objDataset.removeR_Or_PS_Effects(objDataset.getNetwork(),reservoir);
-            break;
+            if(reservoir.substr(0, 2) == "R_"){
+                objDataset.removeR_Or_PS_Effects(objDataset.getNetwork(),reservoir);
+                wait(objDataset);
+                break;
+            }
+            else{
+                reliabilityMenu(objDataset);
+            }
         }
         case 2:{
             string PumpingStation;
-            cout << "Pumping Station: ";
+            cout << "Pumping Station: \n(id = PS_(1-81))\n";
             cin >> PumpingStation;
-            objDataset.removeR_Or_PS_Effects(objDataset.getNetwork(),PumpingStation);
-            break;
+            cout << PumpingStation.substr(0,3);
+            if(PumpingStation.substr(0,3) == "PS_"){
+                objDataset.removeR_Or_PS_Effects(objDataset.getNetwork(),PumpingStation);
+                wait(objDataset);
+                break;
+            }
+            else{
+                reliabilityMenu(objDataset);
+            }
         }
         case 3:{
             string pipelineOrig;
@@ -205,6 +228,32 @@ void Menu::reliabilityMenu(Dataset &objDataset) {
             objDataset.removePipeline_Effects(objDataset.getNetwork(),pipelineOrig, pipelineDest);
         }
     }
+}
+void Menu::isWaterSufficientMenu(Dataset &objDataset) {
+    int choice;
+
+    clearScreen(); // Limpa a tela antes de exibir o menu
+    cout << "\033[1;32m"; // Define a cor verde brilhante para o texto
+    cout << "==================================" << endl;
+    cout << "|      ** Water sufficient **     |" << endl;
+    cout << "==================================" << endl;
+    cout << "|   1. Is Water sufficient?       |" << endl;
+    cout << "|   2. List cities                |" << endl;
+    cout << "|   3. Sair                       |" << endl;
+    cout << "==================================" << endl;
+    cout << "\033[0m"; // Resetar a cor do texto
+
+    cin >> choice;
+
+    switch (choice) {
+        case 1:{
+            objDataset.waterNeeds(objDataset.getNetwork(), objDataset.rawCities);
+            break;
+        }
+        default:
+            break;
+    }
+
 }
 void Menu::wait(Dataset &objDataset) {
     string o;

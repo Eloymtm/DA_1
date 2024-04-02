@@ -57,11 +57,12 @@ void Dataset::loadReservoirs() {
 }
 
 void Dataset::loadSuperSource(){
+
     network.addVertex("SuperSource");
     Vertex<string>* superSource = network.findVertex("SuperSource");
     for(Vertex<string>* v : network.getVertexSet()){
         if(v->getInfo().substr(0,1) == "R"){
-            superSource->addEdge(v, INF);
+            superSource->addEdge(v, reservoirs[v->getInfo()].getMaxDelivery());
         }
     }
 }
@@ -71,7 +72,8 @@ void Dataset::loadSuperSink(){
     Vertex<string>* superSink = network.findVertex("SuperSink");
     for(Vertex<string>* v: network.getVertexSet()){
         if(v->getInfo().substr(0,1) == "C"){
-            v->addEdge(superSink,INF);
+
+            v->addEdge(superSink,cities[v->getInfo()].getDemand());
         }
     }
 }

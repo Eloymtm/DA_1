@@ -211,6 +211,7 @@ CMakeFiles/G03_1.dir/classes/Dataset.cpp.o: /home/eloy_mm2004/Desktop/2ano_2seme
   /usr/include/c++/11/bits/ptr_traits.h \
   /usr/include/c++/11/bits/range_access.h \
   /usr/include/c++/11/bits/refwrap.h \
+  /usr/include/c++/11/bits/specfun.h \
   /usr/include/c++/11/bits/std_abs.h \
   /usr/include/c++/11/bits/std_function.h \
   /usr/include/c++/11/bits/stl_algo.h \
@@ -244,6 +245,7 @@ CMakeFiles/G03_1.dir/classes/Dataset.cpp.o: /home/eloy_mm2004/Desktop/2ano_2seme
   /usr/include/c++/11/cctype \
   /usr/include/c++/11/cerrno \
   /usr/include/c++/11/clocale \
+  /usr/include/c++/11/cmath \
   /usr/include/c++/11/cstdint \
   /usr/include/c++/11/cstdio \
   /usr/include/c++/11/cstdlib \
@@ -269,6 +271,7 @@ CMakeFiles/G03_1.dir/classes/Dataset.cpp.o: /home/eloy_mm2004/Desktop/2ano_2seme
   /usr/include/c++/11/limits \
   /usr/include/c++/11/list \
   /usr/include/c++/11/map \
+  /usr/include/c++/11/math.h \
   /usr/include/c++/11/new \
   /usr/include/c++/11/ostream \
   /usr/include/c++/11/pstl/execution_defs.h \
@@ -280,6 +283,18 @@ CMakeFiles/G03_1.dir/classes/Dataset.cpp.o: /home/eloy_mm2004/Desktop/2ano_2seme
   /usr/include/c++/11/string \
   /usr/include/c++/11/string_view \
   /usr/include/c++/11/system_error \
+  /usr/include/c++/11/tr1/bessel_function.tcc \
+  /usr/include/c++/11/tr1/beta_function.tcc \
+  /usr/include/c++/11/tr1/ell_integral.tcc \
+  /usr/include/c++/11/tr1/exp_integral.tcc \
+  /usr/include/c++/11/tr1/gamma.tcc \
+  /usr/include/c++/11/tr1/hypergeometric.tcc \
+  /usr/include/c++/11/tr1/legendre_function.tcc \
+  /usr/include/c++/11/tr1/modified_bessel_func.tcc \
+  /usr/include/c++/11/tr1/poly_hermite.tcc \
+  /usr/include/c++/11/tr1/poly_laguerre.tcc \
+  /usr/include/c++/11/tr1/riemann_zeta.tcc \
+  /usr/include/c++/11/tr1/special_function_util.h \
   /usr/include/c++/11/tuple \
   /usr/include/c++/11/type_traits \
   /usr/include/c++/11/typeinfo \
@@ -293,6 +308,7 @@ CMakeFiles/G03_1.dir/classes/Dataset.cpp.o: /home/eloy_mm2004/Desktop/2ano_2seme
   /usr/include/features.h \
   /usr/include/linux/errno.h \
   /usr/include/locale.h \
+  /usr/include/math.h \
   /usr/include/pthread.h \
   /usr/include/sched.h \
   /usr/include/stdc-predef.h \
@@ -311,9 +327,18 @@ CMakeFiles/G03_1.dir/classes/Dataset.cpp.o: /home/eloy_mm2004/Desktop/2ano_2seme
   /usr/include/x86_64-linux-gnu/bits/errno.h \
   /usr/include/x86_64-linux-gnu/bits/floatn-common.h \
   /usr/include/x86_64-linux-gnu/bits/floatn.h \
+  /usr/include/x86_64-linux-gnu/bits/flt-eval-method.h \
+  /usr/include/x86_64-linux-gnu/bits/fp-fast.h \
+  /usr/include/x86_64-linux-gnu/bits/fp-logb.h \
+  /usr/include/x86_64-linux-gnu/bits/iscanonical.h \
   /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
+  /usr/include/x86_64-linux-gnu/bits/libm-simd-decl-stubs.h \
   /usr/include/x86_64-linux-gnu/bits/locale.h \
   /usr/include/x86_64-linux-gnu/bits/long-double.h \
+  /usr/include/x86_64-linux-gnu/bits/math-vector.h \
+  /usr/include/x86_64-linux-gnu/bits/mathcalls-helper-functions.h \
+  /usr/include/x86_64-linux-gnu/bits/mathcalls-narrow.h \
+  /usr/include/x86_64-linux-gnu/bits/mathcalls.h \
   /usr/include/x86_64-linux-gnu/bits/pthread_stack_min-dynamic.h \
   /usr/include/x86_64-linux-gnu/bits/pthreadtypes-arch.h \
   /usr/include/x86_64-linux-gnu/bits/pthreadtypes.h \
@@ -445,6 +470,7 @@ CMakeFiles/G03_1.dir/classes/Menu.cpp.o: /home/eloy_mm2004/Desktop/2ano_2semestr
   /usr/include/c++/11/bits/ptr_traits.h \
   /usr/include/c++/11/bits/range_access.h \
   /usr/include/c++/11/bits/refwrap.h \
+  /usr/include/c++/11/bits/specfun.h \
   /usr/include/c++/11/bits/std_abs.h \
   /usr/include/c++/11/bits/std_function.h \
   /usr/include/c++/11/bits/stl_algo.h \
@@ -475,6 +501,7 @@ CMakeFiles/G03_1.dir/classes/Menu.cpp.o: /home/eloy_mm2004/Desktop/2ano_2semestr
   /usr/include/c++/11/cctype \
   /usr/include/c++/11/cerrno \
   /usr/include/c++/11/clocale \
+  /usr/include/c++/11/cmath \
   /usr/include/c++/11/cstdint \
   /usr/include/c++/11/cstdio \
   /usr/include/c++/11/cstdlib \
@@ -500,6 +527,7 @@ CMakeFiles/G03_1.dir/classes/Menu.cpp.o: /home/eloy_mm2004/Desktop/2ano_2semestr
   /usr/include/c++/11/istream \
   /usr/include/c++/11/limits \
   /usr/include/c++/11/list \
+  /usr/include/c++/11/math.h \
   /usr/include/c++/11/new \
   /usr/include/c++/11/ostream \
   /usr/include/c++/11/pstl/execution_defs.h \
@@ -511,6 +539,18 @@ CMakeFiles/G03_1.dir/classes/Menu.cpp.o: /home/eloy_mm2004/Desktop/2ano_2semestr
   /usr/include/c++/11/string \
   /usr/include/c++/11/string_view \
   /usr/include/c++/11/system_error \
+  /usr/include/c++/11/tr1/bessel_function.tcc \
+  /usr/include/c++/11/tr1/beta_function.tcc \
+  /usr/include/c++/11/tr1/ell_integral.tcc \
+  /usr/include/c++/11/tr1/exp_integral.tcc \
+  /usr/include/c++/11/tr1/gamma.tcc \
+  /usr/include/c++/11/tr1/hypergeometric.tcc \
+  /usr/include/c++/11/tr1/legendre_function.tcc \
+  /usr/include/c++/11/tr1/modified_bessel_func.tcc \
+  /usr/include/c++/11/tr1/poly_hermite.tcc \
+  /usr/include/c++/11/tr1/poly_laguerre.tcc \
+  /usr/include/c++/11/tr1/riemann_zeta.tcc \
+  /usr/include/c++/11/tr1/special_function_util.h \
   /usr/include/c++/11/tuple \
   /usr/include/c++/11/type_traits \
   /usr/include/c++/11/typeinfo \
@@ -524,6 +564,7 @@ CMakeFiles/G03_1.dir/classes/Menu.cpp.o: /home/eloy_mm2004/Desktop/2ano_2semestr
   /usr/include/features.h \
   /usr/include/linux/errno.h \
   /usr/include/locale.h \
+  /usr/include/math.h \
   /usr/include/pthread.h \
   /usr/include/sched.h \
   /usr/include/stdc-predef.h \
@@ -542,9 +583,18 @@ CMakeFiles/G03_1.dir/classes/Menu.cpp.o: /home/eloy_mm2004/Desktop/2ano_2semestr
   /usr/include/x86_64-linux-gnu/bits/errno.h \
   /usr/include/x86_64-linux-gnu/bits/floatn-common.h \
   /usr/include/x86_64-linux-gnu/bits/floatn.h \
+  /usr/include/x86_64-linux-gnu/bits/flt-eval-method.h \
+  /usr/include/x86_64-linux-gnu/bits/fp-fast.h \
+  /usr/include/x86_64-linux-gnu/bits/fp-logb.h \
+  /usr/include/x86_64-linux-gnu/bits/iscanonical.h \
   /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
+  /usr/include/x86_64-linux-gnu/bits/libm-simd-decl-stubs.h \
   /usr/include/x86_64-linux-gnu/bits/locale.h \
   /usr/include/x86_64-linux-gnu/bits/long-double.h \
+  /usr/include/x86_64-linux-gnu/bits/math-vector.h \
+  /usr/include/x86_64-linux-gnu/bits/mathcalls-helper-functions.h \
+  /usr/include/x86_64-linux-gnu/bits/mathcalls-narrow.h \
+  /usr/include/x86_64-linux-gnu/bits/mathcalls.h \
   /usr/include/x86_64-linux-gnu/bits/pthread_stack_min-dynamic.h \
   /usr/include/x86_64-linux-gnu/bits/pthreadtypes-arch.h \
   /usr/include/x86_64-linux-gnu/bits/pthreadtypes.h \
@@ -1180,6 +1230,7 @@ CMakeFiles/G03_1.dir/main.cpp.o: /home/eloy_mm2004/Desktop/2ano_2semestre/DA/G03
   /usr/include/c++/11/bits/ptr_traits.h \
   /usr/include/c++/11/bits/range_access.h \
   /usr/include/c++/11/bits/refwrap.h \
+  /usr/include/c++/11/bits/specfun.h \
   /usr/include/c++/11/bits/std_abs.h \
   /usr/include/c++/11/bits/std_function.h \
   /usr/include/c++/11/bits/stl_algo.h \
@@ -1210,6 +1261,7 @@ CMakeFiles/G03_1.dir/main.cpp.o: /home/eloy_mm2004/Desktop/2ano_2semestre/DA/G03
   /usr/include/c++/11/cctype \
   /usr/include/c++/11/cerrno \
   /usr/include/c++/11/clocale \
+  /usr/include/c++/11/cmath \
   /usr/include/c++/11/cstdint \
   /usr/include/c++/11/cstdio \
   /usr/include/c++/11/cstdlib \
@@ -1235,6 +1287,7 @@ CMakeFiles/G03_1.dir/main.cpp.o: /home/eloy_mm2004/Desktop/2ano_2semestre/DA/G03
   /usr/include/c++/11/istream \
   /usr/include/c++/11/limits \
   /usr/include/c++/11/list \
+  /usr/include/c++/11/math.h \
   /usr/include/c++/11/new \
   /usr/include/c++/11/ostream \
   /usr/include/c++/11/pstl/execution_defs.h \
@@ -1246,6 +1299,18 @@ CMakeFiles/G03_1.dir/main.cpp.o: /home/eloy_mm2004/Desktop/2ano_2semestre/DA/G03
   /usr/include/c++/11/string \
   /usr/include/c++/11/string_view \
   /usr/include/c++/11/system_error \
+  /usr/include/c++/11/tr1/bessel_function.tcc \
+  /usr/include/c++/11/tr1/beta_function.tcc \
+  /usr/include/c++/11/tr1/ell_integral.tcc \
+  /usr/include/c++/11/tr1/exp_integral.tcc \
+  /usr/include/c++/11/tr1/gamma.tcc \
+  /usr/include/c++/11/tr1/hypergeometric.tcc \
+  /usr/include/c++/11/tr1/legendre_function.tcc \
+  /usr/include/c++/11/tr1/modified_bessel_func.tcc \
+  /usr/include/c++/11/tr1/poly_hermite.tcc \
+  /usr/include/c++/11/tr1/poly_laguerre.tcc \
+  /usr/include/c++/11/tr1/riemann_zeta.tcc \
+  /usr/include/c++/11/tr1/special_function_util.h \
   /usr/include/c++/11/tuple \
   /usr/include/c++/11/type_traits \
   /usr/include/c++/11/typeinfo \
@@ -1259,6 +1324,7 @@ CMakeFiles/G03_1.dir/main.cpp.o: /home/eloy_mm2004/Desktop/2ano_2semestre/DA/G03
   /usr/include/features.h \
   /usr/include/linux/errno.h \
   /usr/include/locale.h \
+  /usr/include/math.h \
   /usr/include/pthread.h \
   /usr/include/sched.h \
   /usr/include/stdc-predef.h \
@@ -1277,9 +1343,18 @@ CMakeFiles/G03_1.dir/main.cpp.o: /home/eloy_mm2004/Desktop/2ano_2semestre/DA/G03
   /usr/include/x86_64-linux-gnu/bits/errno.h \
   /usr/include/x86_64-linux-gnu/bits/floatn-common.h \
   /usr/include/x86_64-linux-gnu/bits/floatn.h \
+  /usr/include/x86_64-linux-gnu/bits/flt-eval-method.h \
+  /usr/include/x86_64-linux-gnu/bits/fp-fast.h \
+  /usr/include/x86_64-linux-gnu/bits/fp-logb.h \
+  /usr/include/x86_64-linux-gnu/bits/iscanonical.h \
   /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
+  /usr/include/x86_64-linux-gnu/bits/libm-simd-decl-stubs.h \
   /usr/include/x86_64-linux-gnu/bits/locale.h \
   /usr/include/x86_64-linux-gnu/bits/long-double.h \
+  /usr/include/x86_64-linux-gnu/bits/math-vector.h \
+  /usr/include/x86_64-linux-gnu/bits/mathcalls-helper-functions.h \
+  /usr/include/x86_64-linux-gnu/bits/mathcalls-narrow.h \
+  /usr/include/x86_64-linux-gnu/bits/mathcalls.h \
   /usr/include/x86_64-linux-gnu/bits/pthread_stack_min-dynamic.h \
   /usr/include/x86_64-linux-gnu/bits/pthreadtypes-arch.h \
   /usr/include/x86_64-linux-gnu/bits/pthreadtypes.h \
@@ -1359,8 +1434,6 @@ CMakeFiles/G03_1.dir/main.cpp.o: /home/eloy_mm2004/Desktop/2ano_2semestre/DA/G03
 
 /usr/include/x86_64-linux-gnu/c++/11/bits/c++io.h:
 
-/usr/include/x86_64-linux-gnu/c++/11/bits/basic_file.h:
-
 /usr/include/c++/11/fstream:
 
 /home/eloy_mm2004/Desktop/2ano_2semestre/DA/G03_1/classes/Menu.h:
@@ -1371,7 +1444,29 @@ CMakeFiles/G03_1.dir/main.cpp.o: /home/eloy_mm2004/Desktop/2ano_2semestre/DA/G03
 
 /usr/include/x86_64-linux-gnu/bits/wctype-wchar.h:
 
+/usr/include/x86_64-linux-gnu/bits/math-vector.h:
+
 /usr/include/wctype.h:
+
+/usr/include/math.h:
+
+/usr/include/c++/11/tr1/special_function_util.h:
+
+/usr/include/c++/11/tr1/riemann_zeta.tcc:
+
+/usr/include/c++/11/tr1/poly_laguerre.tcc:
+
+/usr/include/c++/11/tr1/poly_hermite.tcc:
+
+/usr/include/c++/11/tr1/hypergeometric.tcc:
+
+/usr/include/c++/11/tr1/ell_integral.tcc:
+
+/usr/include/x86_64-linux-gnu/c++/11/bits/basic_file.h:
+
+/usr/include/c++/11/tr1/beta_function.tcc:
+
+/usr/include/c++/11/tr1/bessel_function.tcc:
 
 /usr/include/c++/11/streambuf:
 
@@ -1403,6 +1498,8 @@ CMakeFiles/G03_1.dir/main.cpp.o: /home/eloy_mm2004/Desktop/2ano_2semestre/DA/G03
 
 /usr/include/c++/11/bits/unordered_map.h:
 
+/usr/include/x86_64-linux-gnu/bits/mathcalls-narrow.h:
+
 /usr/include/c++/11/cwctype:
 
 /usr/include/c++/11/bits/stl_uninitialized.h:
@@ -1414,6 +1511,8 @@ CMakeFiles/G03_1.dir/main.cpp.o: /home/eloy_mm2004/Desktop/2ano_2semestre/DA/G03
 /usr/include/c++/11/bits/stl_multimap.h:
 
 /usr/include/c++/11/bits/stl_deque.h:
+
+/usr/include/x86_64-linux-gnu/bits/mathcalls-helper-functions.h:
 
 /usr/include/c++/11/bits/stl_heap.h:
 
@@ -1435,6 +1534,8 @@ CMakeFiles/G03_1.dir/main.cpp.o: /home/eloy_mm2004/Desktop/2ano_2semestre/DA/G03
 
 /usr/include/c++/11/bits/istream.tcc:
 
+/usr/include/c++/11/bits/specfun.h:
+
 /usr/include/c++/11/bits/invoke.h:
 
 /usr/include/c++/11/bits/hashtable_policy.h:
@@ -1442,6 +1543,8 @@ CMakeFiles/G03_1.dir/main.cpp.o: /home/eloy_mm2004/Desktop/2ano_2semestre/DA/G03
 /usr/include/c++/11/bits/exception_ptr.h:
 
 /usr/include/c++/11/bits/erase_if.h:
+
+/usr/include/x86_64-linux-gnu/bits/iscanonical.h:
 
 /usr/include/x86_64-linux-gnu/bits/byteswap.h:
 
@@ -1505,6 +1608,8 @@ CMakeFiles/G03_1.dir/main.cpp.o: /home/eloy_mm2004/Desktop/2ano_2semestre/DA/G03
 
 /usr/include/linux/errno.h:
 
+/usr/include/c++/11/cmath:
+
 /usr/include/c++/11/debug/debug.h:
 
 /usr/include/c++/11/bits/codecvt.h:
@@ -1518,6 +1623,8 @@ CMakeFiles/G03_1.dir/main.cpp.o: /home/eloy_mm2004/Desktop/2ano_2semestre/DA/G03
 /usr/include/c++/11/cerrno:
 
 /usr/include/x86_64-linux-gnu/bits/types/time_t.h:
+
+/usr/include/x86_64-linux-gnu/bits/flt-eval-method.h:
 
 /usr/include/c++/11/bits/stl_list.h:
 
@@ -1538,6 +1645,8 @@ CMakeFiles/G03_1.dir/main.cpp.o: /home/eloy_mm2004/Desktop/2ano_2semestre/DA/G03
 /usr/include/c++/11/pstl/glue_algorithm_defs.h:
 
 /usr/include/ctype.h:
+
+/usr/include/c++/11/tr1/gamma.tcc:
 
 /home/eloy_mm2004/Desktop/2ano_2semestre/DA/G03_1/classes/City.h:
 
@@ -1564,6 +1673,8 @@ CMakeFiles/G03_1.dir/main.cpp.o: /home/eloy_mm2004/Desktop/2ano_2semestre/DA/G03
 /usr/include/x86_64-linux-gnu/bits/time.h:
 
 /usr/include/x86_64-linux-gnu/c++/11/bits/ctype_inline.h:
+
+/usr/include/x86_64-linux-gnu/bits/fp-fast.h:
 
 /usr/include/x86_64-linux-gnu/bits/types/timer_t.h:
 
@@ -1639,6 +1750,8 @@ CMakeFiles/G03_1.dir/main.cpp.o: /home/eloy_mm2004/Desktop/2ano_2semestre/DA/G03
 
 /usr/include/x86_64-linux-gnu/bits/types/struct_sched_param.h:
 
+/usr/include/x86_64-linux-gnu/bits/fp-logb.h:
+
 /usr/include/c++/11/bits/locale_facets.h:
 
 /usr/include/c++/11/bits/charconv.h:
@@ -1675,6 +1788,8 @@ CMakeFiles/G03_1.dir/main.cpp.o: /home/eloy_mm2004/Desktop/2ano_2semestre/DA/G03
 
 /usr/include/c++/11/bits/range_access.h:
 
+/usr/include/c++/11/math.h:
+
 /usr/include/x86_64-linux-gnu/bits/stdint-intn.h:
 
 /usr/include/c++/11/bits/stl_algobase.h:
@@ -1694,6 +1809,8 @@ CMakeFiles/G03_1.dir/main.cpp.o: /home/eloy_mm2004/Desktop/2ano_2semestre/DA/G03
 /usr/include/c++/11/ext/atomicity.h:
 
 /usr/include/c++/11/bits/alloc_traits.h:
+
+/usr/include/x86_64-linux-gnu/bits/libm-simd-decl-stubs.h:
 
 /usr/include/x86_64-linux-gnu/bits/timex.h:
 
@@ -1751,6 +1868,8 @@ CMakeFiles/G03_1.dir/main.cpp.o: /home/eloy_mm2004/Desktop/2ano_2semestre/DA/G03
 
 /usr/include/c++/11/bits/algorithmfwd.h:
 
+/usr/include/c++/11/tr1/legendre_function.tcc:
+
 /usr/include/x86_64-linux-gnu/bits/types/__fpos64_t.h:
 
 /usr/include/x86_64-linux-gnu/bits/types/__locale_t.h:
@@ -1805,6 +1924,8 @@ CMakeFiles/G03_1.dir/main.cpp.o: /home/eloy_mm2004/Desktop/2ano_2semestre/DA/G03
 
 /usr/include/x86_64-linux-gnu/sys/cdefs.h:
 
+/usr/include/c++/11/tr1/exp_integral.tcc:
+
 /usr/include/x86_64-linux-gnu/sys/select.h:
 
 /usr/include/c++/11/bits/streambuf_iterator.h:
@@ -1819,6 +1940,8 @@ CMakeFiles/G03_1.dir/main.cpp.o: /home/eloy_mm2004/Desktop/2ano_2semestre/DA/G03
 
 /usr/lib/gcc/x86_64-linux-gnu/11/include/stddef.h:
 
+/usr/include/c++/11/tr1/modified_bessel_func.tcc:
+
 /usr/include/x86_64-linux-gnu/bits/types/FILE.h:
 
 /usr/include/c++/11/bits/hash_bytes.h:
@@ -1832,6 +1955,8 @@ CMakeFiles/G03_1.dir/main.cpp.o: /home/eloy_mm2004/Desktop/2ano_2semestre/DA/G03
 /home/eloy_mm2004/Desktop/2ano_2semestre/DA/G03_1/classes/Station.h:
 
 /usr/include/c++/11/array:
+
+/usr/include/x86_64-linux-gnu/bits/mathcalls.h:
 
 /usr/include/c++/11/bits/cxxabi_init_exception.h:
 
