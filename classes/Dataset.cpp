@@ -21,6 +21,9 @@ Dataset::Dataset(list<vector<string>> rawReservoirs, list<vector<string>> rawSta
     cityMaxFlowMap(rawCities);
 }
 
+/**
+ * Populates the graph edges using rawCities (a list of vectors of strings with all cities)
+ */
 void Dataset::loadPipes() {
     for(vector<string> pipe : rawPipes){
         Vertex<string>* src = network.findVertex(pipe[0]);
@@ -35,6 +38,10 @@ void Dataset::loadPipes() {
     }
 }
 
+/**
+ * Populates the graph nodes (cities) and also maps the (city_code, city) pair to all cities in it
+ * using rawCities (a list of vectors of strings with all cities)
+ */
 void Dataset::loadCities() {
     for(vector<string> city : rawCities){
         this->network.addVertex(city[2]);
@@ -42,6 +49,10 @@ void Dataset::loadCities() {
     }
 }
 
+/**
+ * Populates the graph nodes (pumping stations) and also maps the (station_code, station) pair to all pumping stations in it
+ * using rawStations (a list of vectors of strings with all pumping stations)
+ */
 void Dataset::loadStations() {
     for(vector<string> station : rawStations){
         this->network.addVertex(station[1]);
@@ -49,6 +60,10 @@ void Dataset::loadStations() {
     }
 }
 
+/**
+ * Populates the graph nodes (reservoirs) and also maps the (reservoir_code, reservoir) pair to all reservoirs in it
+ * using rawReservoirs (a list of vectors of strings with all reservoirs)
+ */
 void Dataset::loadReservoirs() {
     for(vector<string> reservoir : rawReservoirs){
         this->network.addVertex(reservoir[3]);
@@ -56,6 +71,10 @@ void Dataset::loadReservoirs() {
     }
 }
 
+/**
+ * This function adds a vertex "SuperSource" to the graph
+ * and adds all edges between the "SuperSource" and all reservoirs of the graph with origin on "SuperSource"
+ */
 void Dataset::loadSuperSource(){
 
     network.addVertex("SuperSource");
@@ -67,6 +86,10 @@ void Dataset::loadSuperSource(){
     }
 }
 
+/**
+ * This function adds a vertex "SuperSink" to the graph
+ * and adds all edges between the "SuperSink" and all cities of the graph with origin on cities
+ */
 void Dataset::loadSuperSink(){
     network.addVertex("SuperSink");
     Vertex<string>* superSink = network.findVertex("SuperSink");
@@ -78,6 +101,15 @@ void Dataset::loadSuperSink(){
     }
 }
 
+/**
+ * This function is responsible for checking whether a vertex has not yet been visited and
+ * whether the residual capacity of an edge leading to that vertex is greater than zero.
+ * \n Time Complexity: O(1)
+ * @param q queue to add the vertex if it passes the tests
+ * @param e edge in question
+ * @param w vertex we want to test
+ * @param residual residual capacity of the edge in question
+ */
 void Dataset::testAndVisit(std::queue< Vertex<string>*> &q, Edge<string> *e, Vertex<string> *w, double residual) {
     if (! w->isVisited() && residual > 0) {
         w->setVisited(true);
@@ -86,6 +118,14 @@ void Dataset::testAndVisit(std::queue< Vertex<string>*> &q, Edge<string> *e, Ver
     }
 }
 
+/**
+ * This function implements a breadth-first search (BFS) algorithm to find an increasing path in the graph.
+ * \n Time Complexity: O(V+E)
+ * @param g graph
+ * @param s vertex source
+ * @param t vertex destination
+ * @returns if it was found or not an augmenting path
+ */
 bool Dataset::findAugmentingPath(Graph<string> g, Vertex<string> *s, Vertex<string> *t) {
     for(auto v : g.getVertexSet()) {
         v->setVisited(false);
@@ -111,6 +151,14 @@ bool Dataset::findAugmentingPath(Graph<string> g, Vertex<string> *s, Vertex<stri
     return t->isVisited();
 }
 
+/**
+ * This function is called after finding an increasing path
+ * and is responsible for calculating the minimum residual capacity along that path.
+ * \n Time Complexity: O(P), where P is the number of edges on the shortest path between s and t (i.e. O(n))
+ * @param s vertex source
+ * @param t vertex destination
+ * @returns minimum residual capacity along that path
+ */
 double Dataset::findMinResidualAlongPath(Vertex<string> *s, Vertex<string> *t) {
     double f = INF;
 
@@ -129,6 +177,11 @@ double Dataset::findMinResidualAlongPath(Vertex<string> *s, Vertex<string> *t) {
     return f;
 }
 
+/**
+ * This function is called after determining the minimum residual capacity along the increasing path
+ * and is responsible for updating the flows along this path according to the minimum residual capacity found.
+ * \n Time Complexity: O(P), where P is the number of edges on the shortest path between s and t (i.e. O(n))
+ */
 void Dataset::augmentFlowAlongPath(Vertex<string> *s, Vertex<string> *t, double f) {
     for (auto v = t; v != s; ) {
         auto e = v->getPath();
@@ -144,6 +197,14 @@ void Dataset::augmentFlowAlongPath(Vertex<string> *s, Vertex<string> *t, double 
     }
 }
 
+/**
+ * This function determines the maximum flow on the graph.
+ * \n Time Complexity: O((V + E) * P), where P is the number of edges on the shortest path between s and t (i.e. O(V*E*E))
+ * @param g graph
+ * @param source source_code (string)
+ * @param target target_code (string)
+ * @returns the maximum flow
+ */
 double Dataset::edmondsKarp(Graph<string> g,string source, string target) {
     Vertex<string>* s = g.findVertex(source);
     Vertex<string>* t = g.findVertex(target);
@@ -168,6 +229,13 @@ double Dataset::edmondsKarp(Graph<string> g,string source, string target) {
     return maxFlow;
 }
 
+/**
+ * This function verifies if all the water reservoirs supply enough water to all its delivery sites.
+ * \n Time Complexity: O(n * V * E), where n is the number of cities
+ * @param g graph
+ * @param rawCities list of vector of string
+ * @returns if all the water reservoirs supply enough water to all its delivery sites
+ */
 bool Dataset::waterNeeds(Graph<string> g,list<vector<string>> rawCities){
     map<string, double> waterSupply;
     int r = 0;
@@ -203,6 +271,11 @@ bool Dataset::waterNeeds(Graph<string> g,list<vector<string>> rawCities){
     return true;
 }
 
+/**
+ * Maps (city_code, max_flow) pair to all cities.
+ * \n Time Complexity: O(n * V * E), where n is number of elements of the map
+ * @param rawCities a list of vectors of strings that has all the cities
+ */
 void Dataset::cityMaxFlowMap(list<vector<string>> rawCities){
     edmondsKarp(network,"SuperSource", "SuperSink");
 
@@ -219,6 +292,11 @@ void Dataset::cityMaxFlowMap(list<vector<string>> rawCities){
     }
 }
 
+/**
+ * Calculates maximum flow through the map cityMaxFlowOriginalGraph that belongs to the class Dataset.
+ * \n Time Complexity: O(n)
+ * @returns the maximum flow in the network
+ */
 double Dataset::maxFlow(){
     double r = 0;
 
@@ -231,6 +309,13 @@ double Dataset::maxFlow(){
     return r;
 }
 
+/**
+ * This function verifies if there is any city affected by the removal of a reservoir or a pumping station.
+ * \n Time Complexity: O(n * V * E)
+ * @param g graph
+ * @param v vertex(pumping station or reservoir) to remove
+ * @returns if there is any city affected by the removal of a reservoir or a pumping station
+ */
 bool Dataset::removeR_Or_PS_Effects(Graph<string> g,string v){
     g.removeVertex(v);
 
@@ -279,6 +364,14 @@ bool Dataset::removeR_Or_PS_Effects(Graph<string> g,string v){
     return true;
 }
 
+/**
+ * This function verifies if there is any city affected by the removal of a pipe.
+ * \n Time Complexity: O(V * E)
+ * @param g graph
+ * @param pointA origin of the pipe we want to remove
+ * @param pointB destination of the pipe we want to remove
+ * @returns if there is any city affected by the removal of a pipe
+ */
 bool Dataset::removePipeline_Effects(Graph<string> g, string pointA, string pointB){
     for(auto v : this->network.getVertexSet()){
         for(auto e : v->getAdj()){
@@ -333,6 +426,12 @@ bool Dataset::removePipeline_Effects(Graph<string> g, string pointA, string poin
     return true;
 }
 
+/**
+ * Function to calculate the metrics of a graph.
+ * \n Time Complexity:
+ * @param g graph
+ * @returns a metrics object
+ */
 Metrics Dataset::getMetrics(Graph<string> g){
     Metrics res;
 
@@ -380,6 +479,11 @@ Metrics Dataset::getMetrics(Graph<string> g){
     return res;
 }
 
+/**
+ * Function to balance the network and improve the metrics.
+ * \n Time Complexity:
+ * @param g graph
+ */
 void Dataset::balanceNetwork(Graph<string> g){ //void but could be changed to return Metrics if it eases the menu stuff
     edmondsKarp(g, "SuperSource", "SuperSink"); //get paths
     unordered_map<string , double> overloadedCitiesFlow;//map of overflowing cities -> amount of overflow
