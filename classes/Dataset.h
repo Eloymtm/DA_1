@@ -9,11 +9,15 @@
 #include <unordered_map>
 #include <math.h>
 
+/**
+ * Struct to represent all the important variables of the metrics
+ */
 struct Metrics {
     double average;
     double variance;
     double max_difference;
 };
+
 using namespace std;
 class Dataset {
     friend class Menu;

@@ -14,6 +14,10 @@ class Edge;
 
 #define INF std::numeric_limits<double>::max()
 
+/**
+ * These 3 classes are responsible for storing the program's main graph.
+ */
+
 /************************* Vertex  **************************/
 
 template <class T>
