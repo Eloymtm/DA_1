@@ -205,7 +205,7 @@ void Dataset::augmentFlowAlongPath(Vertex<string> *s, Vertex<string> *t, double 
  * @param target target_code (string)
  * @returns the maximum flow
  */
-double Dataset::edmondsKarp(Graph<string> g,string source, string target) {
+double Dataset::edmondsKarp(Graph<string> &g,string source, string target) {
     Vertex<string>* s = g.findVertex(source);
     Vertex<string>* t = g.findVertex(target);
 
@@ -365,22 +365,27 @@ bool Dataset::removeR_Or_PS_Effects(Graph<string> g,string v){
 }
 
 /**
- * This function verifies if there is any city affected by the removal of a pipe.
- * \n Time Complexity: O(V * E)
- * @param g graph
- * @param pointA origin of the pipe we want to remove
- * @param pointB destination of the pipe we want to remove
- * @returns if there is any city affected by the removal of a pipe
+ * This functions removes the pipe with begin on pointA and end on pointB from the graph g
+ * @param g
+ * @param pointA
+ * @param pointB
  */
-bool Dataset::removePipeline_Effects(Graph<string> g, string pointA, string pointB){
-    for(auto v : this->network.getVertexSet()){
+void Dataset::removePipelines_auxiliar(Graph<string> &g, string pointA, string pointB){
+    for(auto v : g.getVertexSet()){
         for(auto e : v->getAdj()){
             if(e->getOrig()->getInfo() == pointA && e->getDest()->getInfo() == pointB){
                 e->setWeight(0);
             }
         }
     }
-
+}
+/**
+ * This function verifies if there is any city affected by the removal of one or more pipes.
+ * \n Time Complexity: O(V * E)
+ * @param g graph
+ * @returns if there is any city affected by the removal of a pipe
+ */
+bool Dataset::removePipeline_Effects(Graph<string> g){
     unordered_map<string, double> waterSupply;
     int r = 0;
 
