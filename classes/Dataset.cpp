@@ -258,7 +258,7 @@ bool Dataset::waterNeeds(Graph<string> g,list<vector<string>> rawCities){
     while(it != waterSupply.end()){
         auto city = cities.find(it->first);
         if(it->second < city->second.getDemand()){
-            cout << it->first << " " << city->second.getDemand() - it->second << "\n";
+            cout << it->first << "-" << city->second.getName() << ":\n--> Demand: " << city->second.getDemand() << "\n--> Actual flow: " << cityMaxFlowOriginalGraph.find(it->first)->second << "\n--> Deficit: " << city->second.getDemand() - it->second << "\n";
             r++;
         }
         it++;
