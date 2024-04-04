@@ -11,10 +11,10 @@ Menu::Menu(){}
 
 void Menu::run(){
     Parser parser;
-    list<vector<string>> rawReservoirs = parser.readFile("../dataset/small_ds/Reservoirs_Madeira.csv");
-    list<vector<string>> rawStations = parser.readFile("../dataset/small_ds/Stations_Madeira.csv");
-    list<vector<string>> rawCities = parser.readFile("../dataset/small_ds/Cities_Madeira.csv");
-    list<vector<string>> rawPipes = parser.readFile("../dataset/small_ds/Pipes_Madeira.csv");
+    list<vector<string>> rawReservoirs = parser.readFile("../dataset/ds/Reservoir.csv");
+    list<vector<string>> rawStations = parser.readFile("../dataset/ds/Stations.csv");
+    list<vector<string>> rawCities = parser.readFile("../dataset/ds/Cities.csv");
+    list<vector<string>> rawPipes = parser.readFile("../dataset/ds/Pipes.csv");
     Dataset objDataset = Dataset(rawReservoirs, rawStations, rawCities, rawPipes);
     mainMenu(objDataset);
 
