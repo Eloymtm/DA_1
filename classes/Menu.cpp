@@ -244,28 +244,15 @@ void Menu::reliabilityMenu(Dataset &objDataset) {
                 Graph<string> g = objDataset.getNetwork();
                 string pipelineOrig;
                 string pipelineDest;
-                string keepON;
-                
-                while(true){
-                    cout << "Pipeline Origin:";
-                    cin >> pipelineOrig;
-                    cout << "Pipeline Destiny: ";
-                    cin >> pipelineDest;
 
-                    objDataset.removePipelines_auxiliar(g,pipelineOrig,pipelineDest);
+                cout << "Pipeline Origin:";
+                cin >> pipelineOrig;
+                cout << "Pipeline Destiny: ";
+                cin >> pipelineDest;
 
-                    cout << "\nDo you want to remove one more pipeline?[Y/N]";
-                    cin >> keepON;
-                    cout << "\n";
-                    if(keepON == "N"){
-                        break;
-                    }
-                    else{
-                        continue;
-                    }
-                }
-
+                objDataset.removePipelines_auxiliar(g,pipelineOrig,pipelineDest);
                 objDataset.removePipeline_Effects(g);
+
                 break;
             }
             case 4: {
