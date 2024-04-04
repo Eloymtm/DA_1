@@ -154,7 +154,7 @@ bool Dataset::findAugmentingPath(Graph<string> g, Vertex<string> *s, Vertex<stri
 /**
  * This function is called after finding an increasing path
  * and is responsible for calculating the minimum residual capacity along that path.
- * \n Time Complexity: O(P), where P is the number of edges on the shortest path between s and t (i.e. O(n))
+ * \n Time Complexity: O(V), where V in the number of vertices
  * @param s vertex source
  * @param t vertex destination
  * @returns minimum residual capacity along that path
@@ -180,7 +180,7 @@ double Dataset::findMinResidualAlongPath(Vertex<string> *s, Vertex<string> *t) {
 /**
  * This function is called after determining the minimum residual capacity along the increasing path
  * and is responsible for updating the flows along this path according to the minimum residual capacity found.
- * \n Time Complexity: O(P), where P is the number of edges on the shortest path between s and t (i.e. O(n))
+ * \n Time Complexity: O(V), where V in the number of vertices
  */
 void Dataset::augmentFlowAlongPath(Vertex<string> *s, Vertex<string> *t, double f) {
     for (auto v = t; v != s; ) {
@@ -199,7 +199,7 @@ void Dataset::augmentFlowAlongPath(Vertex<string> *s, Vertex<string> *t, double 
 
 /**
  * This function determines the maximum flow on the graph.
- * \n Time Complexity: O((V + E) * P), where P is the number of edges on the shortest path between s and t (i.e. O(V*E*E))
+ * \n Time Complexity: O(V * E * E)
  * @param g graph
  * @param source source_code (string)
  * @param target target_code (string)
@@ -231,7 +231,7 @@ double Dataset::edmondsKarp(Graph<string> &g,string source, string target) {
 
 /**
  * This function verifies if all the water reservoirs supply enough water to all its delivery sites.
- * \n Time Complexity: O(n * V * E), where n is the number of cities
+ * \n Time Complexity: O(V * E * E + Nlog(n)), where N is the number of cities, log(n) because inserting in a map typically takes O(log(n)) time, O(V*E*E) because of the time complexity of Edmonds Karp algorithm
  * @param g graph
  * @param rawCities list of vector of string
  * @returns if all the water reservoirs supply enough water to all its delivery sites
@@ -273,7 +273,7 @@ bool Dataset::waterNeeds(Graph<string> g,list<vector<string>> rawCities){
 
 /**
  * Maps (city_code, max_flow) pair to all cities.
- * \n Time Complexity: O(n * V * E), where n is number of elements of the map
+ * \n Time Complexity: O(V * E * E), O(V*E*E) because of the time complexity of Edmonds Karp algorithm
  * @param rawCities a list of vectors of strings that has all the cities
  */
 void Dataset::cityMaxFlowMap(list<vector<string>> rawCities){
@@ -311,13 +311,16 @@ double Dataset::maxFlow(){
 
 /**
  * This function verifies if there is any city affected by the removal of a reservoir or a pumping station.
- * \n Time Complexity: O(n * V * E)
+ * \n Time Complexity: O(V * E * E), O(V*E*E) because of the time complexity of Edmonds Karp algorithm
  * @param g graph
  * @param v vertex(pumping station or reservoir) to remove
  * @returns if there is any city affected by the removal of a reservoir or a pumping station
  */
 bool Dataset::removeR_Or_PS_Effects(Graph<string> g,string v){
-    g.removeVertex(v);
+    if(!g.removeVertex(v)){
+        cout << "Reservoir/Pumping station doesn't exists!\n";
+        return false;
+    }
 
     unordered_map<string, double> waterSupply;
     int r = 0;
@@ -358,14 +361,16 @@ bool Dataset::removeR_Or_PS_Effects(Graph<string> g,string v){
     }
 
     if(r > 0){
-        return false;
+        return true;
     }
 
-    return true;
+    cout << "NO CITY IS AFFECTED!!\n";
+    return false;
 }
 
 /**
- * This functions removes the pipe with begin on pointA and end on pointB from the graph g
+ * This functions removes the pipe with begin on pointA and end on pointB from the graph g.
+ * \n Time Complexity: O(V * E), because there is a loop over all vertices and all its adjacent edges
  * @param g
  * @param pointA
  * @param pointB
@@ -379,9 +384,10 @@ void Dataset::removePipelines_auxiliar(Graph<string> &g, string pointA, string p
         }
     }
 }
+
 /**
  * This function verifies if there is any city affected by the removal of one or more pipes.
- * \n Time Complexity: O(V * E)
+ * \n Time Complexity: O(V * E * E), O(V*E*E) because of the time complexity of Edmonds Karp algorithm
  * @param g graph
  * @returns if there is any city affected by the removal of a pipe
  */
@@ -425,10 +431,11 @@ bool Dataset::removePipeline_Effects(Graph<string> g){
     }
 
     if(r > 0){
-        return false;
+        return true;
     }
 
-    return true;
+    cout << "NO CITY IS AFFECTED!!\n";
+    return false;
 }
 
 /**
@@ -492,9 +499,6 @@ Metrics Dataset::getMetrics(Graph<string> g){
 void Dataset::balanceNetwork(Graph<string> g){ //void but could be changed to return Metrics if it eases the menu stuff
     edmondsKarp(g, "SuperSource", "SuperSink"); //get paths
     unordered_map<string , double> overloadedCitiesFlow;//map of overflowing cities -> amount of overflow
-
-    Metrics oldMetrics = getMetrics(g);
-    cout << "Actual average = " << oldMetrics.average << " Actual maximum difference = " << oldMetrics.max_difference << " Actual variance = " << oldMetrics.variance << "\n";
 
     auto it = cityMaxFlowOriginalGraph.begin();
     while(it != cityMaxFlowOriginalGraph.end()){
