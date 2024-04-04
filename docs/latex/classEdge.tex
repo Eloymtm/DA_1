@@ -1,0 +1,73 @@
+\hypertarget{classEdge}{}\doxysection{Edge$<$ T $>$ Class Template Reference}
+\label{classEdge}\index{Edge$<$ T $>$@{Edge$<$ T $>$}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classEdge_ab976213419283ed754f42f57b195a288}\label{classEdge_ab976213419283ed754f42f57b195a288}} 
+{\bfseries Edge} (\mbox{\hyperlink{classVertex}{Vertex}}$<$ T $>$ $\ast$orig, \mbox{\hyperlink{classVertex}{Vertex}}$<$ T $>$ $\ast$dest, double w)
+\item 
+\mbox{\Hypertarget{classEdge_a9a2de066dff8513dd788d553fc1d0c81}\label{classEdge_a9a2de066dff8513dd788d553fc1d0c81}} 
+\mbox{\hyperlink{classVertex}{Vertex}}$<$ T $>$ $\ast$ {\bfseries get\+Dest} () const
+\item 
+\mbox{\Hypertarget{classEdge_a3df378e283d6c8be5be4170ac8d7f4e8}\label{classEdge_a3df378e283d6c8be5be4170ac8d7f4e8}} 
+double {\bfseries get\+Weight} () const
+\item 
+\mbox{\Hypertarget{classEdge_a93ce961112cdba81210591edf576ac3f}\label{classEdge_a93ce961112cdba81210591edf576ac3f}} 
+void {\bfseries set\+Weight} (double w)
+\item 
+\mbox{\Hypertarget{classEdge_a2d36af60fa3dea16824bec12e5f68c58}\label{classEdge_a2d36af60fa3dea16824bec12e5f68c58}} 
+bool {\bfseries is\+Selected} () const
+\item 
+\mbox{\Hypertarget{classEdge_a40fc1470c5339203defca19b67c2535b}\label{classEdge_a40fc1470c5339203defca19b67c2535b}} 
+\mbox{\hyperlink{classVertex}{Vertex}}$<$ T $>$ $\ast$ {\bfseries get\+Orig} () const
+\item 
+\mbox{\Hypertarget{classEdge_af0a900f3006e47b9f363df7429298eeb}\label{classEdge_af0a900f3006e47b9f363df7429298eeb}} 
+\mbox{\hyperlink{classEdge}{Edge}}$<$ T $>$ $\ast$ {\bfseries get\+Reverse} () const
+\item 
+\mbox{\Hypertarget{classEdge_a75458cfc838ca5aee5c34cb9f03b5647}\label{classEdge_a75458cfc838ca5aee5c34cb9f03b5647}} 
+double {\bfseries get\+Flow} () const
+\item 
+\mbox{\Hypertarget{classEdge_a87c8402c5edd6729a2c934e2a0cce6fe}\label{classEdge_a87c8402c5edd6729a2c934e2a0cce6fe}} 
+void {\bfseries set\+Selected} (bool selected)
+\item 
+\mbox{\Hypertarget{classEdge_afe8f8429025756c63f38e8c6fde7382c}\label{classEdge_afe8f8429025756c63f38e8c6fde7382c}} 
+void {\bfseries set\+Reverse} (\mbox{\hyperlink{classEdge}{Edge}}$<$ T $>$ $\ast$reverse)
+\item 
+\mbox{\Hypertarget{classEdge_a1819116e2c156733a14bbd94cc27908e}\label{classEdge_a1819116e2c156733a14bbd94cc27908e}} 
+void {\bfseries set\+Flow} (double flow)
+\item 
+\mbox{\Hypertarget{classEdge_ac33def3a06c6bca3aa4cbfe65b618474}\label{classEdge_ac33def3a06c6bca3aa4cbfe65b618474}} 
+bool {\bfseries is\+Processed} () const
+\item 
+\mbox{\Hypertarget{classEdge_aa121e608b6aa49403041e3aa7d6de9cc}\label{classEdge_aa121e608b6aa49403041e3aa7d6de9cc}} 
+void {\bfseries set\+Processed} (bool v)
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classEdge_ae4d65678b91bd9d814af4720ad87cd0c}\label{classEdge_ae4d65678b91bd9d814af4720ad87cd0c}} 
+\mbox{\hyperlink{classVertex}{Vertex}}$<$ T $>$ $\ast$ {\bfseries dest}
+\item 
+\mbox{\Hypertarget{classEdge_af188b57b604f0d65e2da48733bd76426}\label{classEdge_af188b57b604f0d65e2da48733bd76426}} 
+double {\bfseries weight}
+\item 
+\mbox{\Hypertarget{classEdge_a5242549271b59544ad1189fb532b5bbe}\label{classEdge_a5242549271b59544ad1189fb532b5bbe}} 
+bool {\bfseries selected} = false
+\item 
+\mbox{\Hypertarget{classEdge_aa3cf210fb1ffc19af82df31421b1dc06}\label{classEdge_aa3cf210fb1ffc19af82df31421b1dc06}} 
+bool {\bfseries processed} = false
+\item 
+\mbox{\Hypertarget{classEdge_a4510c31e0479f9d25f6e35d086887192}\label{classEdge_a4510c31e0479f9d25f6e35d086887192}} 
+\mbox{\hyperlink{classVertex}{Vertex}}$<$ T $>$ $\ast$ {\bfseries orig}
+\item 
+\mbox{\Hypertarget{classEdge_a6c1e5191f85afbd20cf6198815c9b079}\label{classEdge_a6c1e5191f85afbd20cf6198815c9b079}} 
+\mbox{\hyperlink{classEdge}{Edge}}$<$ T $>$ $\ast$ {\bfseries reverse} = nullptr
+\item 
+\mbox{\Hypertarget{classEdge_a30808601fa37f509147eabf9cc5f9ed6}\label{classEdge_a30808601fa37f509147eabf9cc5f9ed6}} 
+double {\bfseries flow}
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+classes/Graph.\+h\end{DoxyCompactItemize}
