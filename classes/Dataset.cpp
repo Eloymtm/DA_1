@@ -293,23 +293,6 @@ void Dataset::cityMaxFlowMap(list<vector<string>> rawCities){
 }
 
 /**
- * Calculates maximum flow through the map cityMaxFlowOriginalGraph that belongs to the class Dataset.
- * \n Time Complexity: O(n)
- * @returns the maximum flow in the network
- */
-double Dataset::maxFlow(){
-    double r = 0;
-
-    auto it = cityMaxFlowOriginalGraph.begin();
-    while(it != cityMaxFlowOriginalGraph.end()){
-        r += it->second;
-        it++;
-    }
-
-    return r;
-}
-
-/**
  * This function verifies if there is any city affected by the removal of a reservoir or a pumping station.
  * \n Time Complexity: O(V * E * E), O(V*E*E) because of the time complexity of Edmonds Karp algorithm
  * @param g graph
