@@ -98,7 +98,7 @@ void Menu::maxFlowMenu(Dataset &objDataset) {
             case 1:{
                 string cidade;
                 while(true){
-                    cout << "Introduza destino final: \n(id = C_(1-22))\n";
+                    cout << "Insert final destiny: \n(id = C_(1-22))\n";
                     cin >> cidade;
                     if(cidade.substr(0, 2) == "C_"){
                         break;
@@ -125,11 +125,14 @@ void Menu::maxFlowMenu(Dataset &objDataset) {
 
                 break;
             }
-            case 3:
-                cout << "Max flow --> " << objDataset.maxFlow() << "\n";
+            case 3: {
+                auto g = objDataset.getNetwork();
+                cout << "Max flow --> " << objDataset.edmondsKarp(g, "SuperSource", "SuperSink") << "\n";
                 break;
-            case 4:
+            }
+            case 4: {
                 break;
+            }
         }
     }while(choice != "4");
 
@@ -216,7 +219,7 @@ void Menu::reliabilityMenu(Dataset &objDataset) {
                         break;
                     }
                     else{
-                        cout << "Introduziu mal o ID da Cidade tente novamente\n"<< endl;
+                        cout << "You entered the Reservoir ID incorrectly, try again\n"<< endl;
                     }
                 }
 
@@ -233,7 +236,7 @@ void Menu::reliabilityMenu(Dataset &objDataset) {
                         break;
                     }
                     else{
-                        cout << "Introduziu mal o ID da Cidade tente novamente\n"<< endl;
+                        cout << "You entered the Pumping Station ID incorrectly, try again\n"<< endl;
                     }
                 }
 
