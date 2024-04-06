@@ -331,6 +331,9 @@ void Edge<T>::setFlow(double flow) {
     this->flow = flow;
 }
 
+/**
+ * These 2 functions were created to make an efficient search for all edges
+ */
 template <class T>
 bool Edge<T>::isProcessed() const {
     return this->processed;
@@ -522,10 +525,6 @@ bool Graph<T>::isDAG() const {
     return true;
 }
 
-/**
- * Auxiliary function that visits a vertex (v) and its adjacent, recursively.
- * Returns false (not acyclic) if an edge to a vertex in the stack is found.
- */
 template <class T>
 bool Graph<T>::dfsIsDAG(Vertex<T> *v) const {
     v->setVisited(true);
