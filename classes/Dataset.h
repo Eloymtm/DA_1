@@ -7,7 +7,7 @@
 #include "Reservoir.h"
 #include <list>
 #include <unordered_map>
-#include <math.h>
+#include <cmath>
 
 /**
  * Struct to represent all the important variables of the metrics
@@ -49,7 +49,6 @@ protected:
 
         bool waterNeeds(Graph<string> g, list<vector<string>> rawCities);
         void cityMaxFlowMap(list<vector<string>> rawCities);
-        double maxFlow();
 
         Metrics getMetrics(Graph<string> g);
         void balanceNetwork(Graph<string> g);

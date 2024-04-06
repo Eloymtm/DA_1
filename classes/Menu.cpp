@@ -164,7 +164,9 @@ void Menu::betterMetricsMenu(Dataset &objDataset) {
 
         switch (stoi(choice)) {
             case 1: {
-                Metrics oldMetrics = objDataset.getMetrics(objDataset.getNetwork());
+                Graph<string> g = objDataset.getNetwork();
+                objDataset.edmondsKarp(g, "SuperSource", "SuperSink");
+                Metrics oldMetrics = objDataset.getMetrics(g);
                 cout << "Actual average = " << oldMetrics.average << " Actual maximum difference = "
                      << oldMetrics.max_difference << " Actual variance = " << oldMetrics.variance << "\n";
                 break;

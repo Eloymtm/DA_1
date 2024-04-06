@@ -423,7 +423,7 @@ bool Dataset::removePipeline_Effects(Graph<string> g){
 
 /**
  * Function to calculate the metrics of a graph.
- * \n Time Complexity:
+ * \n Time Complexity: O(V + E)
  * @param g graph
  * @returns a metrics object
  */
@@ -449,7 +449,7 @@ Metrics Dataset::getMetrics(Graph<string> g){
     for(auto v : g.getVertexSet()){
         for(auto e : v->getAdj()){
             if(!e->isProcessed()){
-                double diff = abs(e->getWeight() - e->getFlow());
+                double diff = e->getWeight() - e->getFlow();
                 differences.push_back(diff);
                 total_difference += diff;
                 if(diff > max_dif){
@@ -466,7 +466,7 @@ Metrics Dataset::getMetrics(Graph<string> g){
     for(double difference : differences){
         sumSquaredDifference += pow(difference- average, 2);
     }
-    double variance = sumSquaredDifference / ((double) differences.size());
+    double variance = sumSquaredDifference / ((double) differences.size());//formula of variance
 
     res.average = average;
     res.variance = variance;
@@ -479,31 +479,62 @@ Metrics Dataset::getMetrics(Graph<string> g){
  * \n Time Complexity:
  * @param g graph
  */
-void Dataset::balanceNetwork(Graph<string> g){ //void but could be changed to return Metrics if it eases the menu stuff
-    edmondsKarp(g, "SuperSource", "SuperSink"); //get paths
-    unordered_map<string , double> overloadedCitiesFlow;//map of overflowing cities -> amount of overflow
+void Dataset::balanceNetwork(Graph<string> g){
+    edmondsKarp(g, "SuperSource", "SuperSink");
 
-    auto it = cityMaxFlowOriginalGraph.begin();
-    while(it != cityMaxFlowOriginalGraph.end()){
+    map<string, double> waterSupply;
+    unordered_map<string, double> CitiesInDeficit;
+
+    for(vector<string> city : rawCities){
+        double maxFlow = 0;
+        for(Vertex<string>* v : g.getVertexSet()){
+            for(auto e : v->getAdj()){
+                if(e->getDest()->getInfo() == city[2]){
+                    maxFlow += e->getFlow();
+                }
+            }
+        }
+        waterSupply.insert(make_pair(city[2], maxFlow));
+    }
+
+    auto it = waterSupply.begin();
+    while(it != waterSupply.end()){
         auto city = cities.find(it->first);
-        if(it->second > city->second.getDemand()){
-            overloadedCitiesFlow.insert(make_pair(it->first,it->second - city->second.getDemand()));
+        if(it->second < city->second.getDemand()){
+            CitiesInDeficit.insert(make_pair(it->first,city->second.getDemand() - it->second));
         }
         it++;
     }
 
-    for(auto p: overloadedCitiesFlow){ //loop through the overloaded cities
-        Vertex<string> *city = g.findVertex(p.first);
-
-        for(auto e : city->getIncoming()){
-            if(p.second > 0){
-                city->addEdge(e->getOrig(),min(e->getWeight(), p.second));
-                p.second -= min(e->getWeight(), p.second);
+    for(auto v : g.getVertexSet()){
+        for(auto e : v->getAdj()){
+            if(e->getOrig()->getInfo() == "SuperSource" || e->getOrig()->getInfo().substr(0,1) == "C"){
+                e->setProcessed(true);
+            }
+            else{
+                e->setProcessed(false);
             }
         }
-
-        edmondsKarp(g, p.first, "SuperSink");
     }
+
+    for(auto v : g.getVertexSet()){
+        for(auto e : v->getAdj()){
+            if(!e->isProcessed()){
+                auto w = e->getDest();
+                if(CitiesInDeficit.find(w->getInfo()) != CitiesInDeficit.end()){
+                    for(auto other : v->getAdj()){
+                        if(CitiesInDeficit.find(other->getDest()->getInfo()) == CitiesInDeficit.end()){
+                            double r = min(35.0, e->getWeight() - e->getFlow());
+                            e->setFlow(e->getFlow() + r);
+                            other->setFlow(other->getFlow() - r);
+                        }
+                    }
+                }
+                e->setProcessed(true);
+            }
+        }
+    }
+
     Metrics newMetrics = getMetrics(g); //get metrics after balancing is done to afterwards compare
 
     cout << "New average = " << newMetrics.average << " New maximum difference = " << newMetrics.max_difference << " New variance = " << newMetrics.variance;
