@@ -5,8 +5,6 @@
 #include "Menu.h"
 using namespace std;
 
-bool isBalanced = false;
-
 Menu::Menu(){}
 
 void Menu::run(){
