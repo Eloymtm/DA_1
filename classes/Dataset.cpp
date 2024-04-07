@@ -483,16 +483,18 @@ Metrics Dataset::getMetrics(Graph<string> g){
  * If a vertex represents a reservoir, it ensures that the total flow out of the reservoir does not exceed its maximum delivery capacity.
  * After balancing the network, it calculates and prints the new metrics including average, maximum difference, and variance of the flow.
  *
+ * Time Complexity: O(V * E * E)
+ *
  * @param g The graph representing the network.
  */
 void Dataset::balanceNetwork(Graph<string> g){
     edmondsKarp(g, "SuperSource", "SuperSink");
 
     for(Vertex<string>* Vertex : g.getVertexSet()){
-            int Total_Weight = 0;
-            int Total_Flow = 0;
-            int Total_Flow_Reservoir = 0;
-            int Edge_num = 0;
+            double Total_Weight = 0;
+            double Total_Flow = 0;
+            double Total_Flow_Reservoir = 0;
+            double Edge_num = 0;
 
             for (Edge<string> *e: Vertex->getAdj()) {
                 Total_Flow += e->getFlow();                                             // Ficar com o máximo flow que sai de um Vertice!
@@ -500,13 +502,13 @@ void Dataset::balanceNetwork(Graph<string> g){
                 Edge_num++;
             }
 
-            int Total_spare = Total_Weight -
+            double Total_spare = Total_Weight -
                               Total_Flow;                                // O que sobra de weight (capacity) no Vertice
 
             for (Edge<string> *e: Vertex->getAdj()) {
-                float Percentage;
-                float Spare_Flow;
-                int spare = e->getWeight() -
+                double Percentage;
+                double Spare_Flow;
+                double spare = e->getWeight() -
                             e->getFlow();                              // O que sobra de weight (capacity) na Edge
                 if (Total_Weight == 0) {
                     Percentage = 0.0;
@@ -521,10 +523,10 @@ void Dataset::balanceNetwork(Graph<string> g){
                 e->setFlow(e->getFlow() + Spare_Flow);
 
 
-                if (reservoirs[Vertex->getInfo()].getName() != "") {                       // Verificar se é Reservoir
-                    int Max_Delivery = reservoirs[Vertex->getInfo()].getMaxDelivery();   // Get Max_Delivery
-                    int Total_spare_Reservoir;                                           // Vai ser a sobra do que está a mais de flow em comparação com a MaxDelivery para depois ser retirado
-                    float Edge_Flow_Reduction;                                           // Vai ser a sobra do que está a mais de flow em comparação com a MaxDelivery para depois ser retirado a cada Edge
+                if (reservoirs.find(Vertex->getInfo()) != reservoirs.end()) {                       // Verificar se é Reservoir
+                    int Max_Delivery = reservoirs.find(Vertex->getInfo())->second.getMaxDelivery();   // Get Max_Delivery
+                    double Total_spare_Reservoir;                                           // Vai ser a sobra do que está a mais de flow em comparação com a MaxDelivery para depois ser retirado
+                    double Edge_Flow_Reduction;                                           // Vai ser a sobra do que está a mais de flow em comparação com a MaxDelivery para depois ser retirado a cada Edge
 
 
                     for (Edge<string> *e_Reservoir: Vertex->getAdj()) {
@@ -532,7 +534,7 @@ void Dataset::balanceNetwork(Graph<string> g){
                     }
 
                     if (Total_Flow_Reservoir > Max_Delivery) {
-                        Total_spare_Reservoir = Total_Flow_Reservoir - Max_Delivery;
+                        Total_spare_Reservoir = Total_Flow_Reservoir - (double)Max_Delivery;
                         Edge_Flow_Reduction = Total_spare_Reservoir / Edge_num;
 
                         for (Edge<string> *e_Reservoir: Vertex->getAdj()) {
@@ -547,4 +549,3 @@ void Dataset::balanceNetwork(Graph<string> g){
 
     cout << "New average = " << newMetrics.average << " New maximum difference = " << newMetrics.max_difference << " New variance = " << newMetrics.variance;
 }
-
