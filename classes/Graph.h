@@ -14,10 +14,6 @@ class Edge;
 
 #define INF std::numeric_limits<double>::max()
 
-/**
- * These 3 classes are responsible for storing the program's main graph.
- */
-
 /************************* Vertex  **************************/
 
 template <class T>
@@ -85,7 +81,7 @@ protected:
 
     // auxiliary fields
     bool selected = false;
-    bool processed = false;
+    bool processed = false; //  was created to make an efficient search for all edges
 
     // used for bidirectional edges
     Vertex<T> *orig;
@@ -331,9 +327,6 @@ void Edge<T>::setFlow(double flow) {
     this->flow = flow;
 }
 
-/**
- * These 2 functions were created to make an efficient search for all edges
- */
 template <class T>
 bool Edge<T>::isProcessed() const {
     return this->processed;
