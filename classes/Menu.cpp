@@ -81,7 +81,7 @@ void Menu::maxFlowMenu(Dataset &objDataset) {
         cout << "|   1. To a City                 |" << endl;
         cout << "|   2. To each City              |" << endl;
         cout << "|   3. Best Max Flow             |" << endl;
-        cout << "|   4. Sair                      |" << endl;
+        cout << "|   4. Exit                      |" << endl;
         cout << "==================================" << endl;
 
         cout << "Choose one option: \n";
@@ -149,7 +149,7 @@ void Menu::betterMetricsMenu(Dataset &objDataset) {
         cout << "===================================" << endl;
         cout << "|  1. Old Metrics                 |" << endl;
         cout << "|  2. New Metrics after balancing |" << endl;
-        cout << "|  3. Sair                        |" << endl;
+        cout << "|  3. Exit                       |" << endl;
         cout << "===================================" << endl;
 
         cout << "Choose one option: \n";
@@ -197,7 +197,7 @@ void Menu::reliabilityMenu(Dataset &objDataset) {
         cout << "|   1. Reservoir                  |" << endl;
         cout << "|   2. Pumping Station            |" << endl;
         cout << "|   3. Pipeline                   |" << endl;
-        cout << "|   4. Sair                       |" << endl;
+        cout << "|   4. Exit                       |" << endl;
         cout << "==================================" << endl;
 
         cout << "Choose one option: \n";
@@ -278,7 +278,7 @@ void Menu::isWaterSufficientMenu(Dataset &objDataset) {
         cout << "|      ** Water sufficient **     |" << endl;
         cout << "==================================" << endl;
         cout << "|   1. Is Water sufficient?       |" << endl;
-        cout << "|   2. Sair                       |" << endl;
+        cout << "|   2. Exit                       |" << endl;
         cout << "==================================" << endl;
 
         cout << "Choose one option: \n";
