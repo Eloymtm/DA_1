@@ -475,63 +475,71 @@ Metrics Dataset::getMetrics(Graph<string> g){
 }
 
 /**
- * Function to balance the network and improve the metrics.
- * \n Time Complexity:
- * @param g graph
+ * @brief Balances the network flow in the given graph.
+ *
+ * This function balances the network flow in the provided graph by adjusting flow values on edges.
+ * It first computes the maximum flow from a super source to a super sink using the Edmonds-Karp algorithm.
+ * Then, it iterates through each vertex in the graph and adjusts flow values on outgoing edges to balance the network.
+ * If a vertex represents a reservoir, it ensures that the total flow out of the reservoir does not exceed its maximum delivery capacity.
+ * After balancing the network, it calculates and prints the new metrics including average, maximum difference, and variance of the flow.
+ *
+ * @param g The graph representing the network.
  */
 void Dataset::balanceNetwork(Graph<string> g){
     edmondsKarp(g, "SuperSource", "SuperSink");
 
-    map<string, double> waterSupply;
-    unordered_map<string, double> CitiesInDeficit;
+    for(Vertex<string>* Vertex : g.getVertexSet()){
+            int Total_Weight = 0;
+            int Total_Flow = 0;
+            int Total_Flow_Reservoir = 0;
+            int Edge_num = 0;
 
-    for(vector<string> city : rawCities){
-        double maxFlow = 0;
-        for(Vertex<string>* v : g.getVertexSet()){
-            for(auto e : v->getAdj()){
-                if(e->getDest()->getInfo() == city[2]){
-                    maxFlow += e->getFlow();
+            for (Edge<string> *e: Vertex->getAdj()) {
+                Total_Flow += e->getFlow();                                             // Ficar com o máximo flow que sai de um Vertice!
+                Total_Weight += e->getWeight();                                         // Ficar com o máximo Weight (Capacity) que sai de um Vertice!
+                Edge_num++;
+            }
+
+            int Total_spare = Total_Weight -
+                              Total_Flow;                                // O que sobra de weight (capacity) no Vertice
+
+            for (Edge<string> *e: Vertex->getAdj()) {
+                float Percentage;
+                float Spare_Flow;
+                int spare = e->getWeight() -
+                            e->getFlow();                              // O que sobra de weight (capacity) na Edge
+                if (Total_Weight == 0) {
+                    Percentage = 0.0;
+                    Spare_Flow = 0.0;
+                } else {
+                    Percentage = e->getWeight() /
+                                 Total_Weight;                         // A percentagem de weight (capacity) que cada egde tem em comparação ao Total_weight
+                    Spare_Flow = Percentage *
+                                 Total_spare;                              // Vai ser a sobra que cada edge "merece" em percentagem
+                    if (Spare_Flow > spare) { Spare_Flow = spare; }
                 }
-            }
-        }
-        waterSupply.insert(make_pair(city[2], maxFlow));
-    }
+                e->setFlow(e->getFlow() + Spare_Flow);
 
-    auto it = waterSupply.begin();
-    while(it != waterSupply.end()){
-        auto city = cities.find(it->first);
-        if(it->second < city->second.getDemand()){
-            CitiesInDeficit.insert(make_pair(it->first,city->second.getDemand() - it->second));
-        }
-        it++;
-    }
 
-    for(auto v : g.getVertexSet()){
-        for(auto e : v->getAdj()){
-            if(e->getOrig()->getInfo() == "SuperSource" || e->getOrig()->getInfo().substr(0,1) == "C"){
-                e->setProcessed(true);
-            }
-            else{
-                e->setProcessed(false);
-            }
-        }
-    }
+                if (reservoirs[Vertex->getInfo()].getName() != "") {                       // Verificar se é Reservoir
+                    int Max_Delivery = reservoirs[Vertex->getInfo()].getMaxDelivery();   // Get Max_Delivery
+                    int Total_spare_Reservoir;                                           // Vai ser a sobra do que está a mais de flow em comparação com a MaxDelivery para depois ser retirado
+                    float Edge_Flow_Reduction;                                           // Vai ser a sobra do que está a mais de flow em comparação com a MaxDelivery para depois ser retirado a cada Edge
 
-    for(auto v : g.getVertexSet()){
-        for(auto e : v->getAdj()){
-            if(!e->isProcessed()){
-                auto w = e->getDest();
-                if(CitiesInDeficit.find(w->getInfo()) != CitiesInDeficit.end()){
-                    for(auto other : v->getAdj()){
-                        if(CitiesInDeficit.find(other->getDest()->getInfo()) == CitiesInDeficit.end()){
-                            double r = min(35.0, e->getWeight() - e->getFlow());
-                            e->setFlow(e->getFlow() + r);
-                            other->setFlow(other->getFlow() - r);
+
+                    for (Edge<string> *e_Reservoir: Vertex->getAdj()) {
+                        Total_Flow_Reservoir += e_Reservoir->getFlow();
+                    }
+
+                    if (Total_Flow_Reservoir > Max_Delivery) {
+                        Total_spare_Reservoir = Total_Flow_Reservoir - Max_Delivery;
+                        Edge_Flow_Reduction = Total_spare_Reservoir / Edge_num;
+
+                        for (Edge<string> *e_Reservoir: Vertex->getAdj()) {
+                            e_Reservoir->setFlow(e_Reservoir->getFlow() - Edge_Flow_Reduction);
                         }
                     }
                 }
-                e->setProcessed(true);
-            }
         }
     }
 
