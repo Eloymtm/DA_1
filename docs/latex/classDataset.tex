@@ -3,3 +3,327 @@
 
 
 Collaboration diagram for Dataset\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=176pt]{classDataset__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classDataset_aaebd48de21d21df8d3786c8a6b337987}\label{classDataset_aaebd48de21d21df8d3786c8a6b337987}} 
+{\bfseries Dataset} (list$<$ vector$<$ string $>$$>$ raw\+Reservoirs, list$<$ vector$<$ string $>$$>$ raw\+Stations, list$<$ vector$<$ string $>$$>$ raw\+Cities, list$<$ vector$<$ string $>$$>$ raw\+Pipes)
+\item 
+void \mbox{\hyperlink{classDataset_adc3d1163e668a61be226b8550fbe0c1e}{load\+Reservoirs}} ()
+\item 
+void \mbox{\hyperlink{classDataset_a68122f26c1590ed5c8527d89e4d4d4fd}{load\+Stations}} ()
+\item 
+void \mbox{\hyperlink{classDataset_af02503c48ce54d1b4abcfaa754418ab7}{load\+Cities}} ()
+\item 
+void \mbox{\hyperlink{classDataset_a945a4e7e18c2f3ec4efe8ccadbc7be56}{load\+Pipes}} ()
+\item 
+void \mbox{\hyperlink{classDataset_a97958524b67d260ee5fa0a5eb59229da}{load\+Super\+Source}} ()
+\item 
+void \mbox{\hyperlink{classDataset_a1a274937652377efa44f8caaa8812d99}{load\+Super\+Sink}} ()
+\item 
+double \mbox{\hyperlink{classDataset_a6d05ac1ee9c35012282191de3d82136f}{edmonds\+Karp}} (\mbox{\hyperlink{classGraph}{Graph}}$<$ string $>$ \&g, string source, string target)
+\item 
+void \mbox{\hyperlink{classDataset_ac31a9b1c2b45d98c68e5abb44584b4b6}{test\+And\+Visit}} (std\+::queue$<$ \mbox{\hyperlink{classVertex}{Vertex}}$<$ string $>$ $\ast$ $>$ \&q, \mbox{\hyperlink{classEdge}{Edge}}$<$ string $>$ $\ast$e, \mbox{\hyperlink{classVertex}{Vertex}}$<$ string $>$ $\ast$w, double residual)
+\item 
+bool \mbox{\hyperlink{classDataset_a3cea17736ed935567ed9e3e143e5beac}{find\+Augmenting\+Path}} (\mbox{\hyperlink{classGraph}{Graph}}$<$ string $>$ g, \mbox{\hyperlink{classVertex}{Vertex}}$<$ string $>$ $\ast$s, \mbox{\hyperlink{classVertex}{Vertex}}$<$ string $>$ $\ast$t)
+\item 
+double \mbox{\hyperlink{classDataset_a8ede98318689cf83c95ef92459ed97f0}{find\+Min\+Residual\+Along\+Path}} (\mbox{\hyperlink{classVertex}{Vertex}}$<$ string $>$ $\ast$s, \mbox{\hyperlink{classVertex}{Vertex}}$<$ string $>$ $\ast$t)
+\item 
+void \mbox{\hyperlink{classDataset_acac47ddb5c7f57246867a34b0acec517}{augment\+Flow\+Along\+Path}} (\mbox{\hyperlink{classVertex}{Vertex}}$<$ string $>$ $\ast$s, \mbox{\hyperlink{classVertex}{Vertex}}$<$ string $>$ $\ast$t, double f)
+\item 
+bool \mbox{\hyperlink{classDataset_a938e4fde47284658b40d8061c4fa9a31}{water\+Needs}} (\mbox{\hyperlink{classGraph}{Graph}}$<$ string $>$ g, list$<$ vector$<$ string $>$$>$ raw\+Cities)
+\item 
+void \mbox{\hyperlink{classDataset_aaeb0fc2791ba34628fbe44fc5a72870e}{city\+Max\+Flow\+Map}} (list$<$ vector$<$ string $>$$>$ raw\+Cities)
+\item 
+\mbox{\hyperlink{structMetrics}{Metrics}} \mbox{\hyperlink{classDataset_af658a35834a69b2a615917c47bba827d}{get\+Metrics}} (\mbox{\hyperlink{classGraph}{Graph}}$<$ string $>$ g)
+\item 
+void \mbox{\hyperlink{classDataset_aecd7cfe407db60c2060c11c0625b9bbf}{balance\+Network}} (\mbox{\hyperlink{classGraph}{Graph}}$<$ string $>$ g)
+\begin{DoxyCompactList}\small\item\em Balances the network flow in the given graph. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classDataset_a4291404b267a0e82844cfd63382d9ea8}{remove\+R\+\_\+\+Or\+\_\+\+PS\+\_\+\+Effects}} (\mbox{\hyperlink{classGraph}{Graph}}$<$ string $>$ g, string v)
+\item 
+void \mbox{\hyperlink{classDataset_a4482359241a24389855b7fb9f5061424}{remove\+Pipelines\+\_\+auxiliar}} (\mbox{\hyperlink{classGraph}{Graph}}$<$ string $>$ \&g, string pointA, string pointB)
+\item 
+bool \mbox{\hyperlink{classDataset_a7215bcf13b2d6eca71442f61ea4feabe}{remove\+Pipeline\+\_\+\+Effects}} (\mbox{\hyperlink{classGraph}{Graph}}$<$ string $>$ g)
+\item 
+\mbox{\Hypertarget{classDataset_afaebc34a01b3f5873179e82745182d83}\label{classDataset_afaebc34a01b3f5873179e82745182d83}} 
+\mbox{\hyperlink{classGraph}{Graph}}$<$ string $>$ {\bfseries get\+Network} () const
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classDataset_af197dc5da9d5615d00967a078a64ecfb}\label{classDataset_af197dc5da9d5615d00967a078a64ecfb}} 
+\mbox{\hyperlink{classGraph}{Graph}}$<$ string $>$ {\bfseries network}
+\item 
+\mbox{\Hypertarget{classDataset_a1df2bfa6d7ff98d3da7e08639b3ff55f}\label{classDataset_a1df2bfa6d7ff98d3da7e08639b3ff55f}} 
+unordered\+\_\+map$<$ string, \mbox{\hyperlink{classCity}{City}} $>$ {\bfseries cities}
+\item 
+\mbox{\Hypertarget{classDataset_a319e580209b99822ac286c5e18671890}\label{classDataset_a319e580209b99822ac286c5e18671890}} 
+unordered\+\_\+map$<$ string, \mbox{\hyperlink{classStation}{Station}} $>$ {\bfseries stations}
+\item 
+\mbox{\Hypertarget{classDataset_a1c8bb94469e4ca077465098717be6d20}\label{classDataset_a1c8bb94469e4ca077465098717be6d20}} 
+unordered\+\_\+map$<$ string, \mbox{\hyperlink{classReservoir}{Reservoir}} $>$ {\bfseries reservoirs}
+\item 
+\mbox{\Hypertarget{classDataset_a7de673e559175baf22b07a46ab6d40ca}\label{classDataset_a7de673e559175baf22b07a46ab6d40ca}} 
+unordered\+\_\+map$<$ string, double $>$ {\bfseries city\+Max\+Flow\+Original\+Graph}
+\item 
+\mbox{\Hypertarget{classDataset_a8c444233369274dfe2380561f95af2e8}\label{classDataset_a8c444233369274dfe2380561f95af2e8}} 
+list$<$ vector$<$ string $>$ $>$ {\bfseries raw\+Reservoirs}
+\item 
+\mbox{\Hypertarget{classDataset_a9e462d3f8f6e939b0c6991acc22facc6}\label{classDataset_a9e462d3f8f6e939b0c6991acc22facc6}} 
+list$<$ vector$<$ string $>$ $>$ {\bfseries raw\+Stations}
+\item 
+\mbox{\Hypertarget{classDataset_a1721c24a87e48494865df237bbcf876a}\label{classDataset_a1721c24a87e48494865df237bbcf876a}} 
+list$<$ vector$<$ string $>$ $>$ {\bfseries raw\+Cities}
+\item 
+\mbox{\Hypertarget{classDataset_a13a5223101b10ee3a091cb86231f5b3c}\label{classDataset_a13a5223101b10ee3a091cb86231f5b3c}} 
+list$<$ vector$<$ string $>$ $>$ {\bfseries raw\+Pipes}
+\end{DoxyCompactItemize}
+\doxysubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classDataset_a834cec0fab7efabab3cd53540e4d466d}\label{classDataset_a834cec0fab7efabab3cd53540e4d466d}} 
+class {\bfseries Menu}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classDataset_acac47ddb5c7f57246867a34b0acec517}\label{classDataset_acac47ddb5c7f57246867a34b0acec517}} 
+\index{Dataset@{Dataset}!augmentFlowAlongPath@{augmentFlowAlongPath}}
+\index{augmentFlowAlongPath@{augmentFlowAlongPath}!Dataset@{Dataset}}
+\doxysubsubsection{\texorpdfstring{augmentFlowAlongPath()}{augmentFlowAlongPath()}}
+{\footnotesize\ttfamily void Dataset\+::augment\+Flow\+Along\+Path (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classVertex}{Vertex}}$<$ string $>$ $\ast$}]{s,  }\item[{\mbox{\hyperlink{classVertex}{Vertex}}$<$ string $>$ $\ast$}]{t,  }\item[{double}]{f }\end{DoxyParamCaption})}
+
+This function is called after determining the minimum residual capacity along the increasing path and is responsible for updating the flows along this path according to the minimum residual capacity found. ~\newline
+ Time Complexity\+: O(\+V), where V in the number of vertices \mbox{\Hypertarget{classDataset_aecd7cfe407db60c2060c11c0625b9bbf}\label{classDataset_aecd7cfe407db60c2060c11c0625b9bbf}} 
+\index{Dataset@{Dataset}!balanceNetwork@{balanceNetwork}}
+\index{balanceNetwork@{balanceNetwork}!Dataset@{Dataset}}
+\doxysubsubsection{\texorpdfstring{balanceNetwork()}{balanceNetwork()}}
+{\footnotesize\ttfamily void Dataset\+::balance\+Network (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classGraph}{Graph}}$<$ string $>$}]{g }\end{DoxyParamCaption})}
+
+
+
+Balances the network flow in the given graph. 
+
+This function balances the network flow in the provided graph by adjusting flow values on edges. It first computes the maximum flow from a super source to a super sink using the Edmonds-\/\+Karp algorithm. Then, it iterates through each vertex in the graph and adjusts flow values on outgoing edges to balance the network. If a vertex represents a reservoir, it ensures that the total flow out of the reservoir does not exceed its maximum delivery capacity. After balancing the network, it calculates and prints the new metrics including average, maximum difference, and variance of the flow.
+
+Time Complexity\+: O(\+V $\ast$ E $\ast$ E)
+
+
+\begin{DoxyParams}{Parameters}
+{\em g} & The graph representing the network. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classDataset_aaeb0fc2791ba34628fbe44fc5a72870e}\label{classDataset_aaeb0fc2791ba34628fbe44fc5a72870e}} 
+\index{Dataset@{Dataset}!cityMaxFlowMap@{cityMaxFlowMap}}
+\index{cityMaxFlowMap@{cityMaxFlowMap}!Dataset@{Dataset}}
+\doxysubsubsection{\texorpdfstring{cityMaxFlowMap()}{cityMaxFlowMap()}}
+{\footnotesize\ttfamily void Dataset\+::city\+Max\+Flow\+Map (\begin{DoxyParamCaption}\item[{list$<$ vector$<$ string $>$$>$}]{raw\+Cities }\end{DoxyParamCaption})}
+
+Maps (city\+\_\+code, max\+\_\+flow) pair to all cities. ~\newline
+ Time Complexity\+: O(\+V $\ast$ E $\ast$ E), O(\+V$\ast$\+E$\ast$\+E) because of the time complexity of Edmonds Karp algorithm 
+\begin{DoxyParams}{Parameters}
+{\em raw\+Cities} & a list of vectors of strings that has all the cities \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classDataset_a6d05ac1ee9c35012282191de3d82136f}\label{classDataset_a6d05ac1ee9c35012282191de3d82136f}} 
+\index{Dataset@{Dataset}!edmondsKarp@{edmondsKarp}}
+\index{edmondsKarp@{edmondsKarp}!Dataset@{Dataset}}
+\doxysubsubsection{\texorpdfstring{edmondsKarp()}{edmondsKarp()}}
+{\footnotesize\ttfamily double Dataset\+::edmonds\+Karp (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classGraph}{Graph}}$<$ string $>$ \&}]{g,  }\item[{string}]{source,  }\item[{string}]{target }\end{DoxyParamCaption})}
+
+This function determines the maximum flow on the graph. ~\newline
+ Time Complexity\+: O(\+V $\ast$ E $\ast$ E) 
+\begin{DoxyParams}{Parameters}
+{\em g} & graph \\
+\hline
+{\em source} & source\+\_\+code (string) \\
+\hline
+{\em target} & target\+\_\+code (string) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the maximum flow 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classDataset_a3cea17736ed935567ed9e3e143e5beac}\label{classDataset_a3cea17736ed935567ed9e3e143e5beac}} 
+\index{Dataset@{Dataset}!findAugmentingPath@{findAugmentingPath}}
+\index{findAugmentingPath@{findAugmentingPath}!Dataset@{Dataset}}
+\doxysubsubsection{\texorpdfstring{findAugmentingPath()}{findAugmentingPath()}}
+{\footnotesize\ttfamily bool Dataset\+::find\+Augmenting\+Path (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classGraph}{Graph}}$<$ string $>$}]{g,  }\item[{\mbox{\hyperlink{classVertex}{Vertex}}$<$ string $>$ $\ast$}]{s,  }\item[{\mbox{\hyperlink{classVertex}{Vertex}}$<$ string $>$ $\ast$}]{t }\end{DoxyParamCaption})}
+
+This function implements a breadth-\/first search (BFS) algorithm to find an increasing path in the graph. ~\newline
+ Time Complexity\+: O(V+E) 
+\begin{DoxyParams}{Parameters}
+{\em g} & graph \\
+\hline
+{\em s} & vertex source \\
+\hline
+{\em t} & vertex destination \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+if it was found or not an augmenting path 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classDataset_a8ede98318689cf83c95ef92459ed97f0}\label{classDataset_a8ede98318689cf83c95ef92459ed97f0}} 
+\index{Dataset@{Dataset}!findMinResidualAlongPath@{findMinResidualAlongPath}}
+\index{findMinResidualAlongPath@{findMinResidualAlongPath}!Dataset@{Dataset}}
+\doxysubsubsection{\texorpdfstring{findMinResidualAlongPath()}{findMinResidualAlongPath()}}
+{\footnotesize\ttfamily double Dataset\+::find\+Min\+Residual\+Along\+Path (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classVertex}{Vertex}}$<$ string $>$ $\ast$}]{s,  }\item[{\mbox{\hyperlink{classVertex}{Vertex}}$<$ string $>$ $\ast$}]{t }\end{DoxyParamCaption})}
+
+This function is called after finding an increasing path and is responsible for calculating the minimum residual capacity along that path. ~\newline
+ Time Complexity\+: O(\+V), where V in the number of vertices 
+\begin{DoxyParams}{Parameters}
+{\em s} & vertex source \\
+\hline
+{\em t} & vertex destination \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+minimum residual capacity along that path 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classDataset_af658a35834a69b2a615917c47bba827d}\label{classDataset_af658a35834a69b2a615917c47bba827d}} 
+\index{Dataset@{Dataset}!getMetrics@{getMetrics}}
+\index{getMetrics@{getMetrics}!Dataset@{Dataset}}
+\doxysubsubsection{\texorpdfstring{getMetrics()}{getMetrics()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structMetrics}{Metrics}} Dataset\+::get\+Metrics (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classGraph}{Graph}}$<$ string $>$}]{g }\end{DoxyParamCaption})}
+
+Function to calculate the metrics of a graph. ~\newline
+ Time Complexity\+: O(V + E) 
+\begin{DoxyParams}{Parameters}
+{\em g} & graph \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a metrics object 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classDataset_af02503c48ce54d1b4abcfaa754418ab7}\label{classDataset_af02503c48ce54d1b4abcfaa754418ab7}} 
+\index{Dataset@{Dataset}!loadCities@{loadCities}}
+\index{loadCities@{loadCities}!Dataset@{Dataset}}
+\doxysubsubsection{\texorpdfstring{loadCities()}{loadCities()}}
+{\footnotesize\ttfamily void Dataset\+::load\+Cities (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Populates the graph nodes (cities) and also maps the (city\+\_\+code, city) pair to all cities in it using raw\+Cities (a list of vectors of strings with all cities) \mbox{\Hypertarget{classDataset_a945a4e7e18c2f3ec4efe8ccadbc7be56}\label{classDataset_a945a4e7e18c2f3ec4efe8ccadbc7be56}} 
+\index{Dataset@{Dataset}!loadPipes@{loadPipes}}
+\index{loadPipes@{loadPipes}!Dataset@{Dataset}}
+\doxysubsubsection{\texorpdfstring{loadPipes()}{loadPipes()}}
+{\footnotesize\ttfamily void Dataset\+::load\+Pipes (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Populates the graph edges using raw\+Cities (a list of vectors of strings with all cities) \mbox{\Hypertarget{classDataset_adc3d1163e668a61be226b8550fbe0c1e}\label{classDataset_adc3d1163e668a61be226b8550fbe0c1e}} 
+\index{Dataset@{Dataset}!loadReservoirs@{loadReservoirs}}
+\index{loadReservoirs@{loadReservoirs}!Dataset@{Dataset}}
+\doxysubsubsection{\texorpdfstring{loadReservoirs()}{loadReservoirs()}}
+{\footnotesize\ttfamily void Dataset\+::load\+Reservoirs (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Populates the graph nodes (reservoirs) and also maps the (reservoir\+\_\+code, reservoir) pair to all reservoirs in it using raw\+Reservoirs (a list of vectors of strings with all reservoirs) \mbox{\Hypertarget{classDataset_a68122f26c1590ed5c8527d89e4d4d4fd}\label{classDataset_a68122f26c1590ed5c8527d89e4d4d4fd}} 
+\index{Dataset@{Dataset}!loadStations@{loadStations}}
+\index{loadStations@{loadStations}!Dataset@{Dataset}}
+\doxysubsubsection{\texorpdfstring{loadStations()}{loadStations()}}
+{\footnotesize\ttfamily void Dataset\+::load\+Stations (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Populates the graph nodes (pumping stations) and also maps the (station\+\_\+code, station) pair to all pumping stations in it using raw\+Stations (a list of vectors of strings with all pumping stations) \mbox{\Hypertarget{classDataset_a1a274937652377efa44f8caaa8812d99}\label{classDataset_a1a274937652377efa44f8caaa8812d99}} 
+\index{Dataset@{Dataset}!loadSuperSink@{loadSuperSink}}
+\index{loadSuperSink@{loadSuperSink}!Dataset@{Dataset}}
+\doxysubsubsection{\texorpdfstring{loadSuperSink()}{loadSuperSink()}}
+{\footnotesize\ttfamily void Dataset\+::load\+Super\+Sink (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+This function adds a vertex \char`\"{}\+Super\+Sink\char`\"{} to the graph and adds all edges between the \char`\"{}\+Super\+Sink\char`\"{} and all cities of the graph with origin on cities \mbox{\Hypertarget{classDataset_a97958524b67d260ee5fa0a5eb59229da}\label{classDataset_a97958524b67d260ee5fa0a5eb59229da}} 
+\index{Dataset@{Dataset}!loadSuperSource@{loadSuperSource}}
+\index{loadSuperSource@{loadSuperSource}!Dataset@{Dataset}}
+\doxysubsubsection{\texorpdfstring{loadSuperSource()}{loadSuperSource()}}
+{\footnotesize\ttfamily void Dataset\+::load\+Super\+Source (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+This function adds a vertex \char`\"{}\+Super\+Source\char`\"{} to the graph and adds all edges between the \char`\"{}\+Super\+Source\char`\"{} and all reservoirs of the graph with origin on \char`\"{}\+Super\+Source\char`\"{} \mbox{\Hypertarget{classDataset_a7215bcf13b2d6eca71442f61ea4feabe}\label{classDataset_a7215bcf13b2d6eca71442f61ea4feabe}} 
+\index{Dataset@{Dataset}!removePipeline\_Effects@{removePipeline\_Effects}}
+\index{removePipeline\_Effects@{removePipeline\_Effects}!Dataset@{Dataset}}
+\doxysubsubsection{\texorpdfstring{removePipeline\_Effects()}{removePipeline\_Effects()}}
+{\footnotesize\ttfamily bool Dataset\+::remove\+Pipeline\+\_\+\+Effects (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classGraph}{Graph}}$<$ string $>$}]{g }\end{DoxyParamCaption})}
+
+This function verifies if there is any city affected by the removal of one or more pipes. ~\newline
+ Time Complexity\+: O(\+V $\ast$ E $\ast$ E), O(\+V$\ast$\+E$\ast$\+E) because of the time complexity of Edmonds Karp algorithm 
+\begin{DoxyParams}{Parameters}
+{\em g} & graph \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+if there is any city affected by the removal of a pipe 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classDataset_a4482359241a24389855b7fb9f5061424}\label{classDataset_a4482359241a24389855b7fb9f5061424}} 
+\index{Dataset@{Dataset}!removePipelines\_auxiliar@{removePipelines\_auxiliar}}
+\index{removePipelines\_auxiliar@{removePipelines\_auxiliar}!Dataset@{Dataset}}
+\doxysubsubsection{\texorpdfstring{removePipelines\_auxiliar()}{removePipelines\_auxiliar()}}
+{\footnotesize\ttfamily void Dataset\+::remove\+Pipelines\+\_\+auxiliar (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classGraph}{Graph}}$<$ string $>$ \&}]{g,  }\item[{string}]{pointA,  }\item[{string}]{pointB }\end{DoxyParamCaption})}
+
+This functions removes the pipe with begin on pointA and end on pointB from the graph g. ~\newline
+ Time Complexity\+: O(\+V $\ast$ E), because there is a loop over all vertices and all its adjacent edges 
+\begin{DoxyParams}{Parameters}
+{\em g} & \\
+\hline
+{\em pointA} & \\
+\hline
+{\em pointB} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classDataset_a4291404b267a0e82844cfd63382d9ea8}\label{classDataset_a4291404b267a0e82844cfd63382d9ea8}} 
+\index{Dataset@{Dataset}!removeR\_Or\_PS\_Effects@{removeR\_Or\_PS\_Effects}}
+\index{removeR\_Or\_PS\_Effects@{removeR\_Or\_PS\_Effects}!Dataset@{Dataset}}
+\doxysubsubsection{\texorpdfstring{removeR\_Or\_PS\_Effects()}{removeR\_Or\_PS\_Effects()}}
+{\footnotesize\ttfamily bool Dataset\+::remove\+R\+\_\+\+Or\+\_\+\+PS\+\_\+\+Effects (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classGraph}{Graph}}$<$ string $>$}]{g,  }\item[{string}]{v }\end{DoxyParamCaption})}
+
+This function verifies if there is any city affected by the removal of a reservoir or a pumping station. ~\newline
+ Time Complexity\+: O(\+V $\ast$ E $\ast$ E), O(\+V$\ast$\+E$\ast$\+E) because of the time complexity of Edmonds Karp algorithm 
+\begin{DoxyParams}{Parameters}
+{\em g} & graph \\
+\hline
+{\em v} & vertex(pumping station or reservoir) to remove \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+if there is any city affected by the removal of a reservoir or a pumping station 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classDataset_ac31a9b1c2b45d98c68e5abb44584b4b6}\label{classDataset_ac31a9b1c2b45d98c68e5abb44584b4b6}} 
+\index{Dataset@{Dataset}!testAndVisit@{testAndVisit}}
+\index{testAndVisit@{testAndVisit}!Dataset@{Dataset}}
+\doxysubsubsection{\texorpdfstring{testAndVisit()}{testAndVisit()}}
+{\footnotesize\ttfamily void Dataset\+::test\+And\+Visit (\begin{DoxyParamCaption}\item[{std\+::queue$<$ \mbox{\hyperlink{classVertex}{Vertex}}$<$ string $>$ $\ast$ $>$ \&}]{q,  }\item[{\mbox{\hyperlink{classEdge}{Edge}}$<$ string $>$ $\ast$}]{e,  }\item[{\mbox{\hyperlink{classVertex}{Vertex}}$<$ string $>$ $\ast$}]{w,  }\item[{double}]{residual }\end{DoxyParamCaption})}
+
+This function is responsible for checking whether a vertex has not yet been visited and whether the residual capacity of an edge leading to that vertex is greater than zero. ~\newline
+ Time Complexity\+: O(1) 
+\begin{DoxyParams}{Parameters}
+{\em q} & queue to add the vertex if it passes the tests \\
+\hline
+{\em e} & edge in question \\
+\hline
+{\em w} & vertex we want to test \\
+\hline
+{\em residual} & residual capacity of the edge in question \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classDataset_a938e4fde47284658b40d8061c4fa9a31}\label{classDataset_a938e4fde47284658b40d8061c4fa9a31}} 
+\index{Dataset@{Dataset}!waterNeeds@{waterNeeds}}
+\index{waterNeeds@{waterNeeds}!Dataset@{Dataset}}
+\doxysubsubsection{\texorpdfstring{waterNeeds()}{waterNeeds()}}
+{\footnotesize\ttfamily bool Dataset\+::water\+Needs (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classGraph}{Graph}}$<$ string $>$}]{g,  }\item[{list$<$ vector$<$ string $>$$>$}]{raw\+Cities }\end{DoxyParamCaption})}
+
+This function verifies if all the water reservoirs supply enough water to all its delivery sites. ~\newline
+ Time Complexity\+: O(V $\ast$ E $\ast$ E + Nlog(n)), where N is the number of cities, log(n) because inserting in a map typically takes O(log(n)) time, O(\+V$\ast$\+E$\ast$\+E) because of the time complexity of Edmonds Karp algorithm 
+\begin{DoxyParams}{Parameters}
+{\em g} & graph \\
+\hline
+{\em raw\+Cities} & list of vector of string \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+if all the water reservoirs supply enough water to all its delivery sites 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/eloy\+\_\+mm2004/\+Desktop/2ano\+\_\+2semestre/\+DA/\+G03\+\_\+1/classes/Dataset.\+h\item 
+/home/eloy\+\_\+mm2004/\+Desktop/2ano\+\_\+2semestre/\+DA/\+G03\+\_\+1/classes/Dataset.\+cpp\end{DoxyCompactItemize}
