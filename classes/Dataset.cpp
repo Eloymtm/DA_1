@@ -475,9 +475,15 @@ Metrics Dataset::getMetrics(Graph<string> g){
 }
 
 /**
- * Function to balance the network and improve the metrics.
- * \n Time Complexity:
- * @param g graph
+ * @brief Balances the network flow in the given graph.
+ *
+ * This function balances the network flow in the provided graph by adjusting flow values on edges.
+ * It first computes the maximum flow from a super source to a super sink using the Edmonds-Karp algorithm.
+ * Then, it iterates through each vertex in the graph and adjusts flow values on outgoing edges to balance the network.
+ * If a vertex represents a reservoir, it ensures that the total flow out of the reservoir does not exceed its maximum delivery capacity.
+ * After balancing the network, it calculates and prints the new metrics including average, maximum difference, and variance of the flow.
+ *
+ * @param g The graph representing the network.
  */
 void Dataset::balanceNetwork(Graph<string> g){
     edmondsKarp(g, "SuperSource", "SuperSink");
